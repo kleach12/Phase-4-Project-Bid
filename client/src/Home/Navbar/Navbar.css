@@ -1,0 +1,56 @@
+#navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #613dc1;
+  color: white;
+  margin: 0;
+  padding: 0;
+  height: 25%;
+  font-family: 'Silkscreen', cursive;
+  overflow: hidden;
+}
+.navleft{
+  display: flex;
+}
+.navcenter{
+  display: flex;
+}
+.navright{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 5%;
+}
+#signin{
+  display: inline-flex;
+  margin-right: 10px;
+}
+#signup{
+  display: inline;
+  margin-right: 10px;
+}
+
+h1 {
+  padding-left: 5%;
+}
+li{
+  display: flex;
+  /* text-align: right; */
+}
+
+/* ul{
+  margin: 0;
+  padding: 20px;
+} */
+
+#logo{
+  font-size: 50px;
+  text-align: left;
+  padding: 0px 10px 0px 10px;
+  margin: 10px;
+}
+
+.nav-items{
+  display: flex;
+}

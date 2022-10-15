@@ -1,0 +1,10 @@
+.caro {
+ display: flex;
+ padding: 15%;
+ background-color: black;
+}
+
+.slide{
+  background-image: requie('./space.jfif');
+}
+
