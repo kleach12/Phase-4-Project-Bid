@@ -17,7 +17,6 @@ function Carosel(){
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item interval={5000}>
-        <h2> Hi </h2>
         {/* <img
           className="slide"
           src={require("./space.jfif")}

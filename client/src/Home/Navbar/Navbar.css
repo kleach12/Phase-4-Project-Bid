@@ -26,9 +26,21 @@
   display: inline-flex;
   margin-right: 10px;
 }
+#signin:hover{
+  background-color: #000000;
+  color: #ffffff;
+}
+Link{
+  text-decoration: none;
+}
+
 #signup{
   display: inline;
   margin-right: 10px;
+}
+#signup:hover{
+  background-color: #000000;
+  color: #ffffff;
 }
 
 h1 {
@@ -36,13 +48,7 @@ h1 {
 }
 li{
   display: flex;
-  /* text-align: right; */
 }
-
-/* ul{
-  margin: 0;
-  padding: 20px;
-} */
 
 #logo{
   font-size: 50px;
@@ -53,4 +59,8 @@ li{
 
 .nav-items{
   display: flex;
+}
+
+a{
+  text-decoration: none;
 }
