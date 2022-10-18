@@ -26,12 +26,10 @@
   display: inline-flex;
   margin-right: 10px;
 }
+
 #signin:hover{
   background-color: #000000;
   color: #ffffff;
-}
-Link{
-  text-decoration: none;
 }
 
 #signup{

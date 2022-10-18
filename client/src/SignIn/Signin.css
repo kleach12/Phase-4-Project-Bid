@@ -1,8 +1,29 @@
-#signin {
-  display: block;
+#login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #000000;
   color: #4e148c;
   font-family: "Silkscreen", cursive;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  font-size: 30px;
+}
+
+.container{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+.welcome{
+  font-size: 40px;
+}
+
+.exit{
+  float: right;
+  font-family: "Silkscreen", cursive;
+}
+
+#signintop{
+  background-color: #000000;
 }
