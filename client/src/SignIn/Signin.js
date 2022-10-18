@@ -1,21 +1,24 @@
 import "./Signin.css";
 import Typed from "react-typed";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function Signin() {
   return (
-    <div id ="signintop">
-      <button className="exit"> Exit</button>
+    <div id="signintop">
+      <Link to = '/'>
+        <button className="exit"> Exit</button>
+      </Link>
       <div id="login">
-        <div className="exit">
-        </div>
+        <div className="exit"></div>
         <div className="container">
           <Typed
             strings={[
               "Welcome back!",
-              "Are you ready to start bidding?",
+              "Lets start bidding!",
               "Who are you again?",
             ]}
             typeSpeed={40}
+            backSpeed={40}
             className="welcome"
           />
 
@@ -35,8 +38,8 @@ function Signin() {
           >
             <input type="text" />
           </Typed>
+          <button> Sign in</button>
         </div>
-        <button> Sign in</button>
       </div>
     </div>
   );
