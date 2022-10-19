@@ -1,23 +1,58 @@
-
+import { useState } from "react";
 import "./Signup.css";
 import Typed from "react-typed";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { json } from "react-router";
 
 function Signup() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [passconfirm, setPassConfirm] = useState("");
+
+  function handleUsername(e) {
+    setUsername(e.target.value);
+    console.log(username)
+  }
+
+  function handlePassword(e){
+    setPassword(e.target.value)
+    console.log(password)
+  }
+
+  function handlePasswordConfirm(e){
+    setPassConfirm(e.target.value)
+    console.log(passconfirm)
+  }
+
+  function handleSubmit(e){
+    e.preventDefault()
+    const formData = {
+      username: username,
+      password: password,
+      password_confirmation: passconfirm,
+    }
+    fetch('/',{
+      methhod: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body:json.stringify(formData)
+    })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+
+  }
+
   return (
     <div id="signuptop">
-      <Link to = '/'>
+      <Link to="/">
         <button className="exit"> Exit</button>
       </Link>
-      <div id="login">
+      <form id="login">
         <div className="exit"></div>
         <div className="container">
           <Typed
-            strings={[
-              "Have we met?",
-              "You're New?",
-              "Ok, lets sign ",
-            ]}
+            strings={["Have we met?", "You're New?", "Ok, lets sign up "]}
             typeSpeed={40}
             backSpeed={40}
             className="welcome"
@@ -29,7 +64,7 @@ function Signup() {
             backSpeed={50}
             attr="placeholder"
           >
-            <input type="text" />
+            <input value={username} onChange={handleUsername} type="text" />
           </Typed>
           <Typed
             strings={["Enter Password"]}
@@ -37,11 +72,19 @@ function Signup() {
             backSpeed={50}
             attr="placeholder"
           >
-            <input type="text" />
+            <input value = {password} onChange={handlePassword} type="password"  />
           </Typed>
-          <button> Sign in</button>
+          <Typed
+            strings={["Re-enter Password"]}
+            typeSpeed={40}
+            backSpeed={50}
+            attr="placeholder"
+          >
+            <input value={passconfirm} onChange={handlePasswordConfirm} type="password"/>
+          </Typed>
+          <button onClick={}> Create Account</button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
