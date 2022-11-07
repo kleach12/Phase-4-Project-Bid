@@ -31,12 +31,12 @@ function Signup() {
       password: password,
       password_confirmation: passconfirm,
     }
-    fetch('/',{
-      methhod: "POST",
+    fetch("/users" ,{
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body:json.stringify(formData)
+      body: JSON.stringify(formData)
     })
     .then((res) => res.json())
     .then((data) => console.log(data))
@@ -82,7 +82,7 @@ function Signup() {
           >
             <input value={passconfirm} onChange={handlePasswordConfirm} type="password"/>
           </Typed>
-          <button onClick={}> Create Account</button>
+          <button onClick={handleSubmit} > Create Account</button>
         </div>
       </form>
     </div>
