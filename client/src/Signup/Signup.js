@@ -2,9 +2,8 @@ import { useState } from "react";
 import "./Signup.css";
 import Typed from "react-typed";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import { json } from "react-router";
 
-function Signup() {
+function Signup({setUser}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passconfirm, setPassConfirm] = useState("");

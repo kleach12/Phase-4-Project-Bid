@@ -3,8 +3,19 @@ import Signin from "./SignIn/Signin";
 import Signup from "./Signup/Signup";
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    fetch("/me").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+
   return (
     <div>
       <Switch>
@@ -15,7 +26,7 @@ function App() {
           <Signin />
         </Route>
         <Route path="/">
-          <Home />
+          <Home user = {user}/>
         </Route>
       </Switch>
     </div>

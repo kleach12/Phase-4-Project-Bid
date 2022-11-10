@@ -1,8 +1,39 @@
 import "./Signin.css";
 import Typed from "react-typed";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { useState } from "react";
 
 function Signin() {
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+
+  function handleUsername(e) {
+    setUsername(e.target.value);
+    console.log(username)
+  }
+
+  function handlePassword(e){
+    setPassword(e.target.value)
+    console.log(password)
+  }
+
+  function handleSubmit(e){
+    e.preventDefault()
+    const formData = {
+      username: username,
+      password: password
+    }
+    fetch("/login" ,{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData)
+    })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+
+  }
   return (
     <div id="signintop">
       <Link to = '/'>
@@ -28,7 +59,7 @@ function Signin() {
             backSpeed={50}
             attr="placeholder"
           >
-            <input type="text" />
+            <input type="text" onChange={handleUsername}/>
           </Typed>
           <Typed
             strings={["Enter Password"]}
@@ -36,9 +67,9 @@ function Signin() {
             backSpeed={50}
             attr="placeholder"
           >
-            <input type="text" />
+            <input type="password" onChange={handlePassword}/>
           </Typed>
-          <button> Sign in</button>
+          <button onClick={handleSubmit} > Sign in</button>
         </div>
       </div>
     </div>
