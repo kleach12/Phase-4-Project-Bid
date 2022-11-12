@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Signup.css";
 import Typed from "react-typed";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom";
 
 function Signup({setUser}) {
   const [username, setUsername] = useState("");

@@ -1,7 +1,6 @@
 import "./Home.css";
 import Navbar from "./Navbar/Navbar";
 import Carosel from "./Carosel/Carosel";
-import { __esModule } from "react-router-dom/cjs/react-router-dom.min";
 
 
 function Home({user, signedIn}) {

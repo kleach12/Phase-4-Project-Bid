@@ -1,53 +1,50 @@
 import "./Signin.css";
 import Typed from "react-typed";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import { useState } from "react"
-import Naviga
+import { Link, Navigate } from "react-router-dom";
+import { useState } from "react";
 
-function Signin({setSignedIn, signedIn}) {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
+function Signin({ setSignedIn, signedIn }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   function handleUsername(e) {
     setUsername(e.target.value);
-    console.log(username)
+    console.log(username);
   }
 
-  function handlePassword(e){
-    setPassword(e.target.value)
-    console.log(password)
+  function handlePassword(e) {
+    setPassword(e.target.value);
+    console.log(password);
   }
 
-  function handleSubmit(e){
-    e.preventDefault()
+  function handleSubmit(e) {
+    e.preventDefault();
     const formData = {
       username: username,
-      password: password
-    }
-    fetch("/login" ,{
+      password: password,
+    };
+    fetch("/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(formData),
     })
-    .then((res) => res.json())
-    .then((data) => {
-      if(data.id){
-        setSignedIn(true)
-        console.log(signedIn)
-      }
-    })
-
+      .then((res) => res.json())
+      .then((data) => {
+          if (data){
+            setSignedIn(true);
+            console.log(signedIn)
+          }
+      });
   }
-
-  if(signedIn) {
-    return <Navigate replace to="/" />
+  if (signedIn){
+    return <Navigate to ={'/'}/>
   }
 
   return (
     <div id="signintop">
-      <Link to = '/'>
+      <Link to="/">
         <button className="exit"> Exit</button>
       </Link>
       <div id="login">
@@ -70,7 +67,7 @@ function Signin({setSignedIn, signedIn}) {
             backSpeed={50}
             attr="placeholder"
           >
-            <input type="text" onChange={handleUsername}/>
+            <input type="text" onChange={handleUsername} />
           </Typed>
           <Typed
             strings={["Enter Password"]}
@@ -78,9 +75,9 @@ function Signin({setSignedIn, signedIn}) {
             backSpeed={50}
             attr="placeholder"
           >
-            <input type="password" onChange={handlePassword}/>
+            <input type="password" onChange={handlePassword} />
           </Typed>
-          <button onClick={handleSubmit} > Sign in</button>
+          <button onClick={handleSubmit}> Sign in</button>
         </div>
       </div>
     </div>
