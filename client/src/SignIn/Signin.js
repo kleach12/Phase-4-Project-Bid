@@ -1,9 +1,10 @@
 import "./Signin.css";
 import Typed from "react-typed";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import { useState } from "react";
+import { useState } from "react"
+import Naviga
 
-function Signin() {
+function Signin({setSignedIn, signedIn}) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
@@ -31,9 +32,19 @@ function Signin() {
       body: JSON.stringify(formData)
     })
     .then((res) => res.json())
-    .then((data) => console.log(data))
+    .then((data) => {
+      if(data.id){
+        setSignedIn(true)
+        console.log(signedIn)
+      }
+    })
 
   }
+
+  if(signedIn) {
+    return <Navigate replace to="/" />
+  }
+
   return (
     <div id="signintop">
       <Link to = '/'>

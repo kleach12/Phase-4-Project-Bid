@@ -7,11 +7,15 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [signedIn, setSignedIn] = useState(false)
 
   useEffect(() => {
     fetch("/me").then((response) => {
       if (response.ok) {
-        response.json().then((user) => setUser(user));
+        response.json().then((data) => {
+          console.log(data)
+          setUser(data)
+        });
       }
     });
   }, []);
@@ -23,10 +27,10 @@ function App() {
           <Signup />
         </Route>
         <Route path="/signin">
-          <Signin />
+          <Signin setSignedIn = {setSignedIn} signedIn = {signedIn}/>
         </Route>
         <Route path="/">
-          <Home user = {user}/>
+          <Home user = {user} signedIn = {signedIn}/>
         </Route>
       </Switch>
     </div>
