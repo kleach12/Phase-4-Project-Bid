@@ -1,12 +1,13 @@
 import "./Home.css";
 import Navbar from "./Navbar/Navbar";
 import Carosel from "./Carosel/Carosel";
+import LoggedInNav from  "./LoggedInNav/LoggedInNav";
 
 
-function Home({user, signedIn}) {
+function Home({user, signedIn, setSignedIn}) {
   const loggedInUser = (
     <div>
-      <Navbar />
+      <LoggedInNav setSignedIn = {setSignedIn}/>
       <Carosel />
     </div>
   );
