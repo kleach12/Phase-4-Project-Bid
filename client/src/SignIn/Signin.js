@@ -33,6 +33,7 @@ function Signin({ setSignedIn, signedIn }) {
       .then((res) => res.json())
       .then((data) => {
           if (data){
+            console.log(data)
             setSignedIn(true);
             console.log(signedIn)
           }

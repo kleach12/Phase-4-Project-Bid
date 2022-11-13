@@ -6,7 +6,10 @@ function LoggedInNav({setSignedIn}) {
   function handleSignOut(){
     fetch("/logout",{
       method: "DELETE",
-    }).then(()=> setSignedIn(false))
+    }).then((res)=>{ 
+      console.log(res)
+      setSignedIn(false)
+    })
   }
   return (
     <nav id="loggedInNav">
