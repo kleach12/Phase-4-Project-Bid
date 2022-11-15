@@ -23,7 +23,7 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/signup" element={<Signup setSignedIn={setSignedIn} signedIn={signedIn}/>} />
         <Route path="/signin" element={<Signin setSignedIn={setSignedIn} signedIn={signedIn} />} />
         <Route path="/" element={<Home user={user} signedIn={signedIn} setSignedIn ={setSignedIn}/>} />
       </Routes>

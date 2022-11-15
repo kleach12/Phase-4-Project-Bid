@@ -2,46 +2,52 @@ import { useState } from "react";
 import "./Signup.css";
 import Typed from "react-typed";
 import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-function Signup({setUser}) {
+function Signup({ setSignedIn, signedIn }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passconfirm, setPassConfirm] = useState("");
 
   function handleUsername(e) {
     setUsername(e.target.value);
-    console.log(username)
+    console.log(username);
   }
 
-  function handlePassword(e){
-    setPassword(e.target.value)
-    console.log(password)
+  function handlePassword(e) {
+    setPassword(e.target.value);
+    console.log(password);
   }
 
-  function handlePasswordConfirm(e){
-    setPassConfirm(e.target.value)
-    console.log(passconfirm)
+  function handlePasswordConfirm(e) {
+    setPassConfirm(e.target.value);
+    console.log(passconfirm);
   }
 
-  function handleSubmit(e){
-    e.preventDefault()
+  function handleSubmit(e) {
+    e.preventDefault();
     const formData = {
       username: username,
       password: password,
       password_confirmation: passconfirm,
-    }
-    fetch("/users" ,{
+    };
+    fetch("/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(formData),
     })
-    .then((res) => res.json())
-    .then((data) => console.log(data))
-
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+          setSignedIn(true);
+        }
+      });
   }
-
+  if (signedIn){
+    return <Navigate to ={'/'}/>
+  }
   return (
     <div id="signuptop">
       <Link to="/">
@@ -71,7 +77,7 @@ function Signup({setUser}) {
             backSpeed={50}
             attr="placeholder"
           >
-            <input value = {password} onChange={handlePassword} type="password"  />
+            <input value={password} onChange={handlePassword} type="password" />
           </Typed>
           <Typed
             strings={["Re-enter Password"]}
@@ -79,9 +85,13 @@ function Signup({setUser}) {
             backSpeed={50}
             attr="placeholder"
           >
-            <input value={passconfirm} onChange={handlePasswordConfirm} type="password"/>
+            <input
+              value={passconfirm}
+              onChange={handlePasswordConfirm}
+              type="password"
+            />
           </Typed>
-          <button onClick={handleSubmit} > Create Account</button>
+          <button onClick={handleSubmit}> Create Account</button>
         </div>
       </form>
     </div>
