@@ -15,6 +15,7 @@ function App() {
         response.json().then((data) => {
           console.log(data);
           setUser(data);
+          setSignedIn(true);
         });
       }
     });
@@ -23,9 +24,20 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/signup" element={<Signup setSignedIn={setSignedIn} signedIn={signedIn}/>} />
-        <Route path="/signin" element={<Signin setSignedIn={setSignedIn} signedIn={signedIn} />} />
-        <Route path="/" element={<Home user={user} signedIn={signedIn} setSignedIn ={setSignedIn}/>} />
+        <Route
+          path="/signup"
+          element={<Signup setSignedIn={setSignedIn} signedIn={signedIn} />}
+        />
+        <Route
+          path="/signin"
+          element={<Signin setSignedIn={setSignedIn} signedIn={signedIn} />}
+        />
+        <Route
+          path="/"
+          element={
+            <Home user={user} signedIn={signedIn} setSignedIn={setSignedIn} />
+          }
+        />
       </Routes>
     </div>
   );

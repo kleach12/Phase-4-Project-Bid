@@ -29,18 +29,17 @@ function Signin({ setSignedIn, signedIn }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-          if (data.ok){
-            console.log(data)
-            setSignedIn(true);
-            console.log(signedIn)
-          }
-      });
+    }).then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          console.log(data);
+          setSignedIn(true)
+        });
+      }
+    });
   }
-  if (signedIn){
-    return <Navigate to ={'/'}/>
+  if (signedIn) {
+    return <Navigate to={"/"} />;
   }
 
   return (
