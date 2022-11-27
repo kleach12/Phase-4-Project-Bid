@@ -40,7 +40,7 @@ function Signup({ setSignedIn, signedIn }) {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data) {
+        if (data.ok) {
           setSignedIn(true);
         }
       });

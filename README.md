@@ -29,3 +29,6 @@ Things you may want to cover:
      4e148c Blue  violet color
 
       foreman start -f Procfile.dev
+
+      username: testtest
+      password: testtest
