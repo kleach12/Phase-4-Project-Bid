@@ -32,7 +32,7 @@ function Signin({ setSignedIn, signedIn }) {
     })
       .then((res) => res.json())
       .then((data) => {
-          if (data){
+          if (data.ok){
             console.log(data)
             setSignedIn(true);
             console.log(signedIn)
