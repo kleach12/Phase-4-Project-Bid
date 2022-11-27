@@ -1,6 +1,7 @@
 import Home from "./Home/Home";
 import Signin from "./SignIn/Signin";
 import Signup from "./Signup/Signup";
+import Profile from "./Profile/Profile";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -31,6 +32,10 @@ function App() {
         <Route
           path="/signin"
           element={<Signin setSignedIn={setSignedIn} signedIn={signedIn} />}
+        />
+        <Route
+          path="/profile"
+          element={<Profile />}
         />
         <Route
           path="/"

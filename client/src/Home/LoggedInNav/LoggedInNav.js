@@ -1,15 +1,14 @@
 import "./LoggedInNav.css";
 import { Link } from "react-router-dom";
 
-function LoggedInNav({setSignedIn}) {
-
-  function handleSignOut(){
-    fetch("/logout",{
+function LoggedInNav({ setSignedIn }) {
+  function handleSignOut() {
+    fetch("/logout", {
       method: "DELETE",
-    }).then((res)=>{ 
-      console.log(res)
-      setSignedIn(false)
-    })
+    }).then((res) => {
+      console.log(res);
+      setSignedIn(false);
+    });
   }
   return (
     <nav id="loggedInNav">
@@ -18,9 +17,13 @@ function LoggedInNav({setSignedIn}) {
       </div>
       <div className="navcenter"></div>
       <div className="navright">
+        <Link to="/profile" style={{ textDecoration: "none" }}>
           <button id="profile"> Profile </button>
-          <button id="signout" onClick={handleSignOut
-          }> Sign out </button>
+        </Link>
+        <button id="signout" onClick={handleSignOut}>
+          {" "}
+          Sign out{" "}
+        </button>
       </div>
     </nav>
   );
