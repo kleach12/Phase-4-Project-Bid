@@ -1,6 +1,12 @@
-function Profile(){
+import ProfileNavbar from "./ProfileNav/ProfileNavbar"
+import Banner from "./Banner/Banner"
+
+function Profile({user}){
   return(
-    <h2> Profile</h2>
+    <div>
+      <ProfileNavbar/>
+      <Banner user={user}/>
+    </div>
   )
 }
 

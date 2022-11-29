@@ -35,7 +35,7 @@ function App() {
         />
         <Route
           path="/profile"
-          element={<Profile />}
+          element={<Profile user ={user} />}
         />
         <Route
           path="/"

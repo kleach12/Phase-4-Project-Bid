@@ -1,0 +1,64 @@
+#loggedInNav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #613dc1;
+  color: white;
+  margin: 0;
+  padding: 0;
+  height: 25%;
+  font-family: 'Silkscreen', cursive;
+  overflow: hidden;
+}
+.navleft{
+  display: flex;
+}
+.navcenter{
+  display: flex;
+}
+.navright{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 5%;
+}
+#home{
+  display: inline-flex;
+  margin-right: 10px;
+}
+
+#home:hover{
+  background-color: #000000;
+  color: #ffffff;
+}
+
+#signout{
+  display: inline;
+  margin-right: 10px;
+}
+#signout:hover{
+  background-color: #000000;
+  color: #ffffff;
+}
+
+h1 {
+  padding-left: 5%;
+}
+li{
+  display: flex;
+}
+
+#logo{
+  font-size: 50px;
+  text-align: left;
+  padding: 0px 10px 0px 10px;
+  margin: 10px;
+}
+
+.nav-items{
+  display: flex;
+}
+
+a{
+  text-decoration: none;
+}
