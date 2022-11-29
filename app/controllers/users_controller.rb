@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
   def index 
     render json: User.all
@@ -24,12 +25,8 @@ class UsersController < ApplicationController
 
   def update
     user = find_user
-    if user
-      user.update(user_params)
-      render json: user
-    else
-      render json: {error: "User not found"}, status: :not_found
-    end
+    user.update(user_params)
+    render json: user
   end
 
 
@@ -40,7 +37,12 @@ class UsersController < ApplicationController
   end
 
   def find_user
-    User.find_by(id: params[:id] )
+    User.find(params[:id])
   end
+
+  def render_not_found_response
+    render json: { error: "Bird not found" }, status: :not_found
+  end
+
 
 end
