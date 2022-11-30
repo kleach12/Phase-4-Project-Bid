@@ -5,6 +5,6 @@
 }
 
 .slide{
-  background-image: requie('./space.jfif');
+  background-image: require('./space.jfif');
 }
 

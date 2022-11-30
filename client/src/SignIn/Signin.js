@@ -9,12 +9,10 @@ function Signin({ setSignedIn, signedIn }) {
 
   function handleUsername(e) {
     setUsername(e.target.value);
-    console.log(username);
   }
 
   function handlePassword(e) {
-    setPassword(e.target.value);
-    console.log(password);
+    setPassword(e.target.value);    
   }
 
   function handleSubmit(e) {
@@ -31,8 +29,7 @@ function Signin({ setSignedIn, signedIn }) {
       body: JSON.stringify(formData),
     }).then((response) => {
       if (response.ok) {
-        response.json().then((data) => {
-          console.log(data);
+        response.json().then(() => {
           setSignedIn(true)
         });
       }

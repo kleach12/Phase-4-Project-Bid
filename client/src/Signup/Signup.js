@@ -11,17 +11,14 @@ function Signup({ setSignedIn, signedIn }) {
 
   function handleUsername(e) {
     setUsername(e.target.value);
-    console.log(username);
   }
 
   function handlePassword(e) {
     setPassword(e.target.value);
-    console.log(password);
   }
 
   function handlePasswordConfirm(e) {
     setPassConfirm(e.target.value);
-    console.log(passconfirm);
   }
 
   function handleSubmit(e) {
@@ -39,8 +36,7 @@ function Signup({ setSignedIn, signedIn }) {
       body: JSON.stringify(formData),
     }).then((response) => {
       if (response.ok) {
-        response.json().then((data) => {
-          console.log(data);
+        response.json().then(() => {
           setSignedIn(true);
         });
       }

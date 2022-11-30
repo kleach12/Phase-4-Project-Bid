@@ -14,7 +14,6 @@ function App() {
     fetch("/me").then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          console.log(data);
           setUser(data);
           setSignedIn(true);
         });
@@ -35,7 +34,7 @@ function App() {
         />
         <Route
           path="/profile"
-          element={<Profile user ={user} />}
+          element={<Profile user = {user} />}
         />
         <Route
           path="/"

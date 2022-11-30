@@ -5,7 +5,7 @@ function Profile({user}){
   return(
     <div>
       <ProfileNavbar/>
-      <Banner user={user}/>
+      <Banner user = {user}/>
     </div>
   )
 }
