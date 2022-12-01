@@ -1,10 +1,10 @@
 import './Banner.css'
 
 function Banner({ user }) {
-  console.log(user)
+  // I need to fix edge case when user refreshes page we lose all user information. I need the page to be able to refresh and keep all the data
   return (
-    <div>
-      <img className= 'profile_banner' src= {user.profile_banner} width = '100%' height = '250em'/>
+    <div id = "profile_banner">
+      <img src= {user.profile_banner} />
     </div>
   );
 }
