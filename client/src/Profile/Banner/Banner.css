@@ -1,23 +1,61 @@
-#profile_banner img {
+#profile_banner {
+  font-family: "Silkscreen", cursive;
+  background: black;
+  overflow: hidden; 
+}
+
+#banner_current {
   width: 100%;
   height: 25vh;
+  position: relative;
 }
+
+#banner_edit {
+  object-fit: cover; 
+  opacity: 0.2;
+}
+
 #edit_banner {
   padding: 0%;
   z-index: 1;
   position: absolute;
   left: 97%;
-  color: white;
-  opacity: 50%;
+  color: #613dc1;
+  opacity: 40%;
   font-size: 150%;
 }
+
 #edit_banner:hover {
   opacity: 100%;
+}
+
+#banner_form {
+  left: 0;
+  position: absolute;
+  text-align: center;
+  top: 10%;
+  width: 100%;
+}
+
+#edit_input {
+}
+
+h3 {
+  font-family: "Silkscreen", cursive;
+  color: white;
 }
 
 @media screen and (max-width: 1080px) {
   #profile_banner img {
     width: 100%;
     height: 15vh;
+  }
+
+  #banner_form {
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 7%;
+    width: 100%;
   }
 }
