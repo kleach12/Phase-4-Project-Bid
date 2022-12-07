@@ -26,13 +26,13 @@ class UsersController < ApplicationController
   def update
     user = find_user
     user.update(user_params)
-    head :no_content
+    render json: user
   end
 
   def destroy
     user = find_user
     user.destroy
-
+    head :no_content
   end
 
 

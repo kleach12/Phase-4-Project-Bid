@@ -34,12 +34,12 @@ function App() {
         />
         <Route
           path="/profile"
-          element={<Profile user={user} setUser={setUser} />}
+          element={<Profile user={user} setUser={setUser} setSignedIn={setSignedIn}  />}
         />
         <Route
           path="/"
           element={
-            <Home user={user} signedIn={signedIn} setSignedIn={setSignedIn} />
+            <Home user={user} signedIn={signedIn}/>
           }
         />
       </Routes>

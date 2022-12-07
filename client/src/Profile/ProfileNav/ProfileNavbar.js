@@ -1,9 +1,9 @@
 import "./ProfileNavbar.css";
 import { Link } from "react-router-dom";
 
-function ProfileNavbar({ setSignedIn }) {
+function ProfileNavbar({ user, setSignedIn }) {
   function handleDeleteUser() {
-    fetch("/logout", {
+    fetch(`/users/${user.id}`, {
       method: "DELETE",
     }).then((res) => {
       console.log(res);
@@ -23,7 +23,7 @@ function ProfileNavbar({ setSignedIn }) {
         </Link>
         <button id="signout" onClick={handleDeleteUser}>
           {" "}
-          Deleted{" "}
+          Delete{" "}
         </button>
       </div>
     </nav>
