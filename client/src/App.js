@@ -26,11 +26,11 @@ function App() {
       <Routes>
         <Route
           path="/signup"
-          element={<Signup setSignedIn={setSignedIn} signedIn={signedIn} />}
+          element={<Signup setSignedIn={setSignedIn} signedIn={signedIn} setUser={setUser}/>}
         />
         <Route
           path="/signin"
-          element={<Signin setSignedIn={setSignedIn} signedIn={signedIn} />}
+          element={<Signin setSignedIn={setSignedIn} signedIn={signedIn} setUser={setUser} />}
         />
         <Route
           path="/profile"

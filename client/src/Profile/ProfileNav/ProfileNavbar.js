@@ -2,7 +2,7 @@ import "./ProfileNavbar.css";
 import { Link } from "react-router-dom";
 
 function ProfileNavbar({ setSignedIn }) {
-  function handleSignOut() {
+  function handleDeleteUser() {
     fetch("/logout", {
       method: "DELETE",
     }).then((res) => {
@@ -10,6 +10,7 @@ function ProfileNavbar({ setSignedIn }) {
       setSignedIn(false);
     });
   }
+
   return (
     <nav id="loggedInNav">
       <div className="navleft">
@@ -20,9 +21,9 @@ function ProfileNavbar({ setSignedIn }) {
         <Link to="/" style={{ textDecoration: "none" }}>
           <button id="home"> Home </button>
         </Link>
-        <button id="signout" onClick={handleSignOut}>
+        <button id="signout" onClick={handleDeleteUser}>
           {" "}
-          Sign out{" "}
+          Deleted{" "}
         </button>
       </div>
     </nav>

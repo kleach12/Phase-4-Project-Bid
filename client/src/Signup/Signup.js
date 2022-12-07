@@ -4,7 +4,7 @@ import Typed from "react-typed";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
-function Signup({ setSignedIn, signedIn }) {
+function Signup({ setSignedIn, signedIn,setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passconfirm, setPassConfirm] = useState("");
@@ -36,8 +36,9 @@ function Signup({ setSignedIn, signedIn }) {
       body: JSON.stringify(formData),
     }).then((response) => {
       if (response.ok) {
-        response.json().then(() => {
+        response.json().then((data) => {
           setSignedIn(true);
+          setUser(data);
         });
       }
     });

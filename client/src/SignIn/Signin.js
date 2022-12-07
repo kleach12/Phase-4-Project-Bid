@@ -3,7 +3,7 @@ import Typed from "react-typed";
 import { Link, Navigate } from "react-router-dom";
 import { useState } from "react";
 
-function Signin({ setSignedIn, signedIn }) {
+function Signin({ setSignedIn, signedIn, setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -12,7 +12,7 @@ function Signin({ setSignedIn, signedIn }) {
   }
 
   function handlePassword(e) {
-    setPassword(e.target.value);    
+    setPassword(e.target.value);
   }
 
   function handleSubmit(e) {
@@ -29,8 +29,9 @@ function Signin({ setSignedIn, signedIn }) {
       body: JSON.stringify(formData),
     }).then((response) => {
       if (response.ok) {
-        response.json().then(() => {
-          setSignedIn(true)
+        response.json().then((data) => {
+          setSignedIn(true);
+          setUser(data);
         });
       }
     });
