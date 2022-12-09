@@ -21,10 +21,13 @@ function ProfileNavbar({ user, setSignedIn }) {
         <Link to="/" style={{ textDecoration: "none" }}>
           <button id="home"> Home </button>
         </Link>
-        <button id="signout" onClick={handleDeleteUser}>
+        <Link to='/delete' style={{ textDecoration: 'none' }}>
+          <button id="signout"> Delete </button>
+        </Link>
+        {/* <button id="signout" onClick={handleDeleteUser}>
           {" "}
           Delete{" "}
-        </button>
+        </button> */}
       </div>
     </nav>
   );
