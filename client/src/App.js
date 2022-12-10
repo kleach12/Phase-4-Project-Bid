@@ -62,7 +62,12 @@ function App() {
             />
           }
         />
-        <Route path="/" element={<Home user={user} signedIn={signedIn} />} />
+        <Route
+          path="/"
+          element={
+            <Home user={user} signedIn={signedIn} setSignedIn={setSignedIn} />
+          }
+        />
       </Routes>
     </div>
   );
