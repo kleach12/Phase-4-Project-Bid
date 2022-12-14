@@ -1,5 +1,6 @@
 import ProfileNavbar from "./ProfileNav/ProfileNavbar";
 import Banner from "./Banner/Banner";
+import Profile_Pic from "./Profile_Pic/Profile_Pic";
 
 function Profile({ user, setUser, setSignedIn }) {
   // fix the issue with refreshing and losing data also add a function that will allow user to edit there banner image. also add profile picture feat
@@ -12,6 +13,7 @@ function Profile({ user, setUser, setSignedIn }) {
     <div>
       <ProfileNavbar user = {user} setSignedIn = {setSignedIn} />
       <Banner user={user} setUser={setUser}  />
+      <Profile_Pic user={user} setUser={setUser}/>
     </div>
   );
 }
