@@ -9,12 +9,10 @@ function Banner({ user, setUser }) {
 
   function editBanner() {
     setEditMode(!editMode);
-    console.log(editMode);
   }
 
   function handleNewBanner(e) {
     setNewBanner(e.target.value);
-    console.log(newBanner);
   }
 
   function handleBannerUpdate(e) {
@@ -34,7 +32,7 @@ function Banner({ user, setUser }) {
       .then((data) => {
         console.log(data);
         setUser(data);
-        setEditMode(false)
+        setEditMode(false);
       });
   }
 
@@ -44,10 +42,10 @@ function Banner({ user, setUser }) {
         <div id="edit_banner">
           <FontAwesomeIcon icon={faPenToSquare} onClick={editBanner} />
         </div>
-        <img id = "banner_edit" src={user.profile_banner} />
-        <form id = 'banner_form'>
-        <h3> New Profile Url</h3>
-          <input id = "edit_input" type="text" onChange={handleNewBanner} />
+        <img id="banner_edit" src={user.profile_banner} />
+        <form id="banner_form">
+          <h3> New Profile Url</h3>
+          <input id="edit_input" type="text" onChange={handleNewBanner} />
           <button type="submit" onClick={handleBannerUpdate}>
             {" "}
             Submit
@@ -62,7 +60,7 @@ function Banner({ user, setUser }) {
       <div id="edit_banner">
         <FontAwesomeIcon icon={faPenToSquare} onClick={editBanner} />
       </div>
-      <img id = "banner_current" src={user.profile_banner} />
+      <img id="banner_current" src={user.profile_banner} />
     </div>
   );
 }

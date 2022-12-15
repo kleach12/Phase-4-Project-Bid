@@ -1,12 +1,48 @@
-import './Profile_Pic.css'
+import "./Profile_Pic.css";
 
-function Profile_Pic({user, setUser}){
-  console.log(user)
+import { useState } from "react";
+
+function Profile_Pic({ user, setUser }) {
+  const [editMode, setEditMode] = useState(false);
+  const [newPic, setNewPic] = useState(null)
+
+  function editPic() {
+    setEditMode(!editMode);
+    console.log(editMode);
+  }
+
+  function handleProfilePicUpdate(e) {
+    e.preventDefault();
+    const formData = {
+      profile_pic: newPic,
+    };
+
+    fetch(`/users/${user.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setUser(data);
+        setEditMode(false);
+      });
+  }
+
+if(editMode){
   return(
-    <div>
-      <img  src={user.profile_pic} />
+    <div id="profile_pic" onClick={editPic}>
     </div>
   )
 }
+  return (
+    <div id ="profile_pic" onClick={editPic}>
+      <img src={user.profile_pic} />
+    </div>
+  );
+}
 
-export default Profile_Pic
+export default Profile_Pic;
