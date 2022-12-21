@@ -34,7 +34,10 @@ function Profile_Pic({ user, setUser }) {
 
 if(editMode){
   return(
-    <div id="profile_pic" onClick={editPic}>
+    <div id="profile_pic" >
+      <img src={user.profile_pic} />
+      <input type= 'textbox'></input>
+      <button onClick={editPic}> New Pic </button>
     </div>
   )
 }
