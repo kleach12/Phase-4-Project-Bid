@@ -36,8 +36,8 @@ if(editMode){
   return(
     <div id="profile_pic" >
       <img src={user.profile_pic} />
-      <input type= 'textbox'></input>
-      <button onClick={editPic}> New Pic </button>
+      <input id = 'newPicInput' type= 'textbox'></input>
+      <button id = 'newPicSubmit' onClick={editPic}> New Pic </button>
     </div>
   )
 }

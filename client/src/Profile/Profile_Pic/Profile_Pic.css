@@ -1,4 +1,5 @@
 #profile_pic{
+  font-family: "Silkscreen", cursive;
   border: 2mm solid black ;
   border-radius: 50%;
   width: 170px;
@@ -9,6 +10,11 @@
   background-color: white;
 }
 
-#profilr_pic img{
+#profile_pic img{
   border-radius: 30%;
+}
+
+#newPicSumbit{
+  position: absolute;
+
 }
