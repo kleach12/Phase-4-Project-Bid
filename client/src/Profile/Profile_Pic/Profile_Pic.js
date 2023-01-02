@@ -4,7 +4,7 @@ import { useState } from "react";
 
 function Profile_Pic({ user, setUser }) {
   const [editMode, setEditMode] = useState(false);
-  const [newPic, setNewPic] = useState(null)
+  const [newPic, setNewPic] = useState(null);
 
   function editPic() {
     setEditMode(!editMode);
@@ -32,17 +32,25 @@ function Profile_Pic({ user, setUser }) {
       });
   }
 
-if(editMode){
-  return(
-    <div id="profile_pic" >
-      <img src={user.profile_pic} />
-      <input id = 'newPicInput' type= 'textbox'></input>
-      <button id = 'newPicSubmit' onClick={editPic}> New Pic </button>
-    </div>
-  )
-}
+  if (editMode) {
+    return (
+      <div>
+        <div id="profile_pic" onClick={editPic}>
+          <img id="user_pic" src={user.profile_pic} />
+        </div>
+        <form id="profile_edit_input">
+          <h2> New Profile Picture</h2>
+          <input id="newPicInput" type="textbox"></input>
+          <button id="newPicSubmit" onClick={editPic}>
+            {" "}
+            New Pic{" "}
+          </button>
+        </form>
+      </div>
+    );
+  }
   return (
-    <div id ="profile_pic" onClick={editPic}>
+    <div id="profile_pic" onClick={editPic}>
       <img src={user.profile_pic} />
     </div>
   );

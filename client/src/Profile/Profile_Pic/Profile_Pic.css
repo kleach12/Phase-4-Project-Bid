@@ -1,20 +1,29 @@
-#profile_pic{
+#profile_pic {
   font-family: "Silkscreen", cursive;
-  border: 2mm solid black ;
+  border: 2mm solid black;
   border-radius: 50%;
   width: 170px;
   height: 170px;
   top: 225px;
   left: 10px;
-  position: absolute;
   background-color: white;
-}
-
-#profile_pic img{
-  border-radius: 30%;
-}
-
-#newPicSumbit{
   position: absolute;
+}
 
+
+#profile_edit_input {
+  left: 0;
+  text-align: center;
+  top: 10%;
+  width: 100%;
+  font-family: "Silkscreen", cursive;
+}
+
+#newPicSumbit {
+  /* position: absolute;
+  top: 10;
+  left: 10; */
+}
+
+#newPicInput {
 }
