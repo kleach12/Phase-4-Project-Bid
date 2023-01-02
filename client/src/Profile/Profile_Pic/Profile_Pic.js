@@ -11,6 +11,10 @@ function Profile_Pic({ user, setUser }) {
     console.log(editMode);
   }
 
+  function handleNewProPic(e){
+    setNewPic(e.target.value)
+  }
+
   function handleProfilePicUpdate(e) {
     e.preventDefault();
     const formData = {
@@ -40,8 +44,8 @@ function Profile_Pic({ user, setUser }) {
         </div>
         <form id="profile_edit_input">
           <h2> New Profile Picture</h2>
-          <input id="newPicInput" type="textbox"></input>
-          <button id="newPicSubmit" onClick={editPic}>
+          <input id="newPicInput" type="textbox" onChange={handleNewProPic}></input>
+          <button id="newPicSubmit" onClick={handleProfilePicUpdate}>
             {" "}
             New Pic{" "}
           </button>

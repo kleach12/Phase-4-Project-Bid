@@ -1,15 +1,19 @@
 #profile_pic {
-  font-family: "Silkscreen", cursive;
-  border: 2mm solid black;
   border-radius: 50%;
   width: 170px;
   height: 170px;
   top: 225px;
   left: 10px;
-  background-color: white;
   position: absolute;
 }
 
+#profile_pic img{
+  border-radius: 50%;
+  width: 170px;
+  height: 170px;
+  top: 225px;
+  left: 10px;
+}
 
 #profile_edit_input {
   left: 0;
