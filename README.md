@@ -33,5 +33,8 @@ Things you may want to cover:
       username: testtest
       password: testtest
 
-1/1/2022 
+1/1/2023
   * Fixing the User profile pic css and adding functionality to change the picture
+
+1/2/2023
+  * Start building stores so user can select items to bid on 
