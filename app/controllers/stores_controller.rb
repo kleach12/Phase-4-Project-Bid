@@ -1,5 +1,9 @@
 class StoresController < ApplicationController
 
+  def index
+    render json: Store.all
+  end
+
   def show 
     store = find_store
     if store

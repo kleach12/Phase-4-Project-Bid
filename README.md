@@ -38,3 +38,6 @@ Things you may want to cover:
 
 1/2/2023
   * Start building stores so user can select items to bid on 
+
+1/3/2023
+  * Made correction to Store index route
