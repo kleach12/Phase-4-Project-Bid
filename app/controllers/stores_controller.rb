@@ -32,5 +32,4 @@ class StoresController < ApplicationController
     Store.find_by(params[:id])
   end 
 
-  
 end

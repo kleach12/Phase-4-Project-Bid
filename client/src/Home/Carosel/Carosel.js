@@ -1,8 +1,20 @@
 import './Carosel.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import Carousel from 'react-bootstrap/Carousel';
-
+import { useEffect, useState } from 'react';
 function Carosel(){
+
+  useEffect (() => {
+    fetch("/stores").then((response) => {
+      if(response.ok){
+        response.json().then((data) => {
+          console.log(data)
+        })
+      }
+    });
+  },[]);
+
+
   return(
     <Carousel className='caro' >
       <Carousel.Item interval={5000} >
