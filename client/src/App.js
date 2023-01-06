@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 function App() {
   const [user, setUser] = useState(null);
   const [signedIn, setSignedIn] = useState(false);
+  const [allStores, holdStores] = useState(null);
 
   useEffect(() => {
     fetch("/me").then((response) => {
@@ -17,6 +18,16 @@ function App() {
         response.json().then((data) => {
           setUser(data);
           setSignedIn(true);
+        });
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    fetch("/stores").then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          holdStores(data);
         });
       }
     });
@@ -65,7 +76,12 @@ function App() {
         <Route
           path="/"
           element={
-            <Home user={user} signedIn={signedIn} setSignedIn={setSignedIn} />
+            <Home
+              user={user}
+              signedIn={signedIn}
+              setSignedIn={setSignedIn}
+              allStores={allStores}
+            />
           }
         />
       </Routes>

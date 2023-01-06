@@ -43,4 +43,7 @@ Things you may want to cover:
   * Made correction to Store index route
 
 1/4/2023
-  * 
+  * Started work on adding stores to the carosel
+
+1/5/2023
+  * Begin creating the pages for stores 
