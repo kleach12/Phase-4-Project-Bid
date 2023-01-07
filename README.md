@@ -46,4 +46,7 @@ Things you may want to cover:
   * Started work on adding stores to the carosel
 
 1/5/2023
-  * Begin creating the pages for stores 
+  * Begin creating the pages for stores
+
+1/6/2023
+  
