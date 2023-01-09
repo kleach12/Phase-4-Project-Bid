@@ -1,9 +1,9 @@
-import "./ProfileNavbar.css";
 import { Link } from "react-router-dom";
+import "./StoreNav.css";
 
-function ProfileNavbar() {
+function StoreNav() {
   return (
-    <nav id="loggedInNav">
+    <nav id="store_nav">
       <div className="navleft">
         <h1>Bid</h1>
       </div>
@@ -12,12 +12,9 @@ function ProfileNavbar() {
         <Link to="/" style={{ textDecoration: "none" }}>
           <button id="home"> Home </button>
         </Link>
-        <Link to="/delete" style={{ textDecoration: "none" }}>
-          <button id="signout"> Delete </button>
-        </Link>
       </div>
     </nav>
   );
 }
 
-export default ProfileNavbar;
+export default StoreNav;

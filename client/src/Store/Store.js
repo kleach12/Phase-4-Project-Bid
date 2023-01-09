@@ -1,5 +1,11 @@
+import StoreNav from "./StoreNav/StoreNav";
+
 function Store() {
-  return <h2> Hi </h2>;
+  return (
+    <div>
+      <StoreNav />
+    </div>
+  );
 }
 
 export default Store;
