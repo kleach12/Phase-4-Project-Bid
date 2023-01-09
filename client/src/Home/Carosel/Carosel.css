@@ -1,10 +1,23 @@
 .caro {
  display: flex;
- padding: 15%;
+ align-items: center;
+ justify-content: center;
+ padding: 25px;
  background-color: black;
 }
 
-.slide{
-  background-image: require('./space.jfif');
+#caro_item {
+  display: flex;
+  align-items: center;
+  justify-content: center;  
 }
+
+#store_name{
+  color: #613dc1;
+  font-family: 'Silkscreen', cursive;
+  font-size: 100px;
+  font-weight: 200;
+} 
+
+
 

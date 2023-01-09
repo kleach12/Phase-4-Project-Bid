@@ -7,7 +7,7 @@ function Home({ signedIn, setSignedIn, allStores }) {
   const loggedInUser = (
     <div>
       <LoggedInNav setSignedIn={setSignedIn} />
-      <Carosel />
+      <Carosel allStores={allStores} />
     </div>
   );
 

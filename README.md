@@ -33,20 +33,5 @@ Things you may want to cover:
       username: testtest
       password: testtest
 
-1/1/2023
-  * Fixing the User profile pic css and adding functionality to change the picture
 
-1/2/2023
-  * Start building stores so user can select items to bid on 
-
-1/3/2023
-  * Made correction to Store index route
-
-1/4/2023
-  * Started work on adding stores to the carosel
-
-1/5/2023
-  * Begin creating the pages for stores
-
-1/6/2023
   

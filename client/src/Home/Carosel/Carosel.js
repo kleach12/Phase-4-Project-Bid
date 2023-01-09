@@ -4,25 +4,21 @@ import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
 
 function Carosel({ allStores }) {
-  // function handleStoreRoutes(){
-  //   <Link to='/signin' style={{ textDecoration: 'none' }}>
-  //         <button id="signin"> Sign in </button>
-  //       </Link>
-  // }
 
   if (allStores != null) {
+    console.log(allStores)
     return (
       <Carousel className="caro">
         {allStores.map((store) => (
-          <Carousel.Item interval={5000} >
-            <Link to="/signin" style={{ textDecoration: "none" }}>
+          <Carousel.Item  key = {store.id} interval={5000} id = "caro_item">
+            <Link to="/store" style={{ textDecoration: "none" }}>
             <img
-              className="slide"
-              src={require("./space.jfif")}
+              id="slide"
+              src={store.picture}
               alt="First slide"
             />
             <Carousel.Caption>
-              <h3>{store.name}</h3>
+              {/* <h2 id = 'store_name'>{store.name}</h2> */}
             </Carousel.Caption>
             </Link>
           </Carousel.Item>
