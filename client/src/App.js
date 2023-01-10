@@ -12,6 +12,11 @@ function App() {
   const [user, setUser] = useState(null);
   const [signedIn, setSignedIn] = useState(false);
   const [allStores, holdStores] = useState(null);
+  const [currentStore, setCurrentStore] = useState(null);
+  console.log(currentStore)
+  function handleStore(storeId){
+    console.log(storeId)
+  }
 
   useEffect(() => {
     fetch("/me").then((response) => {
@@ -74,13 +79,7 @@ function App() {
             />
           }
         />
-        <Route
-          path="/store"
-          element={
-            <Store
-            />
-          }
-        />
+        <Route path="/store" element={<Store  />} />
         <Route
           path="/"
           element={
@@ -89,6 +88,7 @@ function App() {
               signedIn={signedIn}
               setSignedIn={setSignedIn}
               allStores={allStores}
+              handleStore={handleStore}
             />
           }
         />
