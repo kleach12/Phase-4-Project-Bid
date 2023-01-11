@@ -3,18 +3,18 @@ import Navbar from "./Navbar/Navbar";
 import Carosel from "./Carosel/Carosel";
 import LoggedInNav from "./LoggedInNav/LoggedInNav";
 
-function Home({ signedIn, setSignedIn, allStores, handleStore }) {
+function Home({ signedIn, setSignedIn, allStores, setCurrentStore }) {
   const loggedInUser = (
     <div>
       <LoggedInNav setSignedIn={setSignedIn} />
-      <Carosel allStores={allStores} handleStore = {handleStore} />
+      <Carosel allStores={allStores} setCurrentStore = {setCurrentStore} />
     </div>
   );
 
   const emptyUser = (
     <div>
       <Navbar />
-      <Carosel allStores={allStores} handleStore = {handleStore} />
+      <Carosel allStores={allStores} setCurrentStore = {setCurrentStore} />
     </div>
   );
 

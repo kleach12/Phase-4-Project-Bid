@@ -1,9 +1,9 @@
-import "./StoreBanner.css"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
-import { useState } from "react";
+import "./StoreBanner.css";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
+// import { useState } from "react";
 
-function StoreBanner({ user, setUser }) {
+function StoreBanner({ currentStore }) {
   // const [editMode, setEditMode] = useState(false);
   // const [newBanner, setNewBanner] = useState(null);
 
@@ -57,7 +57,7 @@ function StoreBanner({ user, setUser }) {
 
   return (
     <div id="store_banner">
-      <img id="banner_current"  />
+      <img id="banner_current" src={currentStore.picture} />
     </div>
   );
 }

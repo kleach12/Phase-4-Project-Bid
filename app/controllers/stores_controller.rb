@@ -5,7 +5,7 @@ class StoresController < ApplicationController
   end
 
   def show 
-    store = find_store
+    store = Store.find_by(id: session[:store_id])
     if store
       render json: store 
     else 

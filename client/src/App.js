@@ -5,7 +5,8 @@ import Profile from "./Profile/Profile";
 import DeleteProfile from "./DeleteProfile/DeleteProfile";
 import Store from "./Store/Store";
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -13,10 +14,26 @@ function App() {
   const [signedIn, setSignedIn] = useState(false);
   const [allStores, holdStores] = useState(null);
   const [currentStore, setCurrentStore] = useState(null);
-  console.log(currentStore)
-  function handleStore(storeId){
-    console.log(storeId)
-  }
+
+  // function handleStore(currStore) {
+  //   const formData = {
+  //     name: currStore.name,
+  //   };
+  //   fetch("/currstore", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(formData),
+  //   }).then((response) => {
+  //     if (response.ok) {
+  //       response.json().then((data) => {
+  //         setCurrentStore(data);
+  //         <Navigate to="/store" replace={true} />;
+  //       });
+  //     }
+  //   });
+  // }
 
   useEffect(() => {
     fetch("/me").then((response) => {
@@ -34,6 +51,17 @@ function App() {
       if (response.ok) {
         response.json().then((data) => {
           holdStores(data);
+        });
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    fetch("/visitstore").then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          console.log(data)
+          setCurrentStore(data);
         });
       }
     });
@@ -79,7 +107,15 @@ function App() {
             />
           }
         />
-        <Route path="/store" element={<Store  />} />
+        <Route
+          path="/store"
+          element={
+            <Store
+              currentStore={currentStore}
+              setCurrentStore={setCurrentStore}
+            />
+          }
+        />
         <Route
           path="/"
           element={
@@ -88,7 +124,7 @@ function App() {
               signedIn={signedIn}
               setSignedIn={setSignedIn}
               allStores={allStores}
-              handleStore={handleStore}
+              setCurrentStore={setCurrentStore}
             />
           }
         />

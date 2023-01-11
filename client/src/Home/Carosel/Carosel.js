@@ -2,8 +2,30 @@ import "./Carosel.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-function Carosel({ allStores, handleStore }) {
+function Carosel({ allStores,setCurrentStore }) {
+
+  function handleStore(currStore) {
+    console.log(currStore.name)
+    const formData = {
+      name: currStore.name,
+    };
+    fetch("/currstore", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    }).then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          setCurrentStore(data);
+          <Navigate to="/store" replace={true} />;
+        });
+      }
+    });
+  }
 
   if (allStores != null) {
     return (
