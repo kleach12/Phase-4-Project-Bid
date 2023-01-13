@@ -5,8 +5,7 @@ import Profile from "./Profile/Profile";
 import DeleteProfile from "./DeleteProfile/DeleteProfile";
 import Store from "./Store/Store";
 import "./App.css";
-// import { Navigate } from "react-router-dom";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -14,26 +13,8 @@ function App() {
   const [signedIn, setSignedIn] = useState(false);
   const [allStores, holdStores] = useState(null);
   const [currentStore, setCurrentStore] = useState(null);
-
-  // function handleStore(currStore) {
-  //   const formData = {
-  //     name: currStore.name,
-  //   };
-  //   fetch("/currstore", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(formData),
-  //   }).then((response) => {
-  //     if (response.ok) {
-  //       response.json().then((data) => {
-  //         setCurrentStore(data);
-  //         <Navigate to="/store" replace={true} />;
-  //       });
-  //     }
-  //   });
-  // }
+  const [chosenStore, setChosenStore] = useState({ name: "" });
+  const [viewingStore, setStoreView] = useState(false);
 
   useEffect(() => {
     fetch("/me").then((response) => {
@@ -60,7 +41,7 @@ function App() {
     fetch("/visitstore").then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          console.log(data)
+          console.log(data);
           setCurrentStore(data);
         });
       }
@@ -113,6 +94,9 @@ function App() {
             <Store
               currentStore={currentStore}
               setCurrentStore={setCurrentStore}
+              setChosenStore={setChosenStore}
+              setStoreView={setStoreView}
+              viewingStore={viewingStore}
             />
           }
         />
@@ -125,6 +109,10 @@ function App() {
               setSignedIn={setSignedIn}
               allStores={allStores}
               setCurrentStore={setCurrentStore}
+              setChosenStore={setChosenStore}
+              chosenStore={chosenStore}
+              viewingStore={viewingStore}
+              setStoreView={setStoreView}
             />
           }
         />

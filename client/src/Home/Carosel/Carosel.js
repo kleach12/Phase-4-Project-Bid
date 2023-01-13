@@ -1,16 +1,32 @@
 import "./Carosel.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Carousel from "react-bootstrap/Carousel";
-import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
-function Carosel({ allStores,setCurrentStore }) {
+function Carosel({
+  allStores,
+  setCurrentStore,
+  setChosenStore,
+  chosenStore,
+  viewingStore,
+  setStoreView,
+}) {
+  function handleChosenStore(currStore) {
+    setChosenStore({ name: currStore.name });
+    if (chosenStore.name !== "") {
+      handleStore();
+    }
+    //  console.log(currStore.name)
+  }
 
-  function handleStore(currStore) {
-    console.log(currStore.name)
+  function handleStore() {
+    console.log(chosenStore);
+
     const formData = {
-      name: currStore.name,
+      name: chosenStore.name,
     };
+
+    // if (chosenStore.name !== ""){
     fetch("/currstore", {
       method: "POST",
       headers: {
@@ -21,24 +37,28 @@ function Carosel({ allStores,setCurrentStore }) {
       if (response.ok) {
         response.json().then((data) => {
           setCurrentStore(data);
-          <Navigate to="/store" replace={true} />;
+          setStoreView(true);
+          console.log(data);
         });
       }
     });
+    // }
+  }
+  if (viewingStore) {
+    return <Navigate to={"/store"} />;
   }
 
   if (allStores != null) {
     return (
-      <Carousel className="caro" >
+      <Carousel className="caro">
         {allStores.map((store) => (
-          <Carousel.Item  key = {store.id} interval={5000} id = "caro_item" onClick={() => handleStore(store)}>
-            <Link to="/store" style={{ textDecoration: "none" }} >
-            <img
-              id="slide"
-              src={store.picture}
-              alt="First slide"
-            />
-            </Link>
+          <Carousel.Item
+            key={store.id}
+            interval={5000}
+            id="caro_item"
+            onClick={() => handleChosenStore(store)}
+          >
+            <img id="slide" src={store.picture} alt="First slide" />
           </Carousel.Item>
         ))}
       </Carousel>

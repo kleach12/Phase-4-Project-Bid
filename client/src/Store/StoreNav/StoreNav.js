@@ -1,16 +1,22 @@
-import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import "./StoreNav.css";
 
-function StoreNav({ setCurrentStore }) {
+function StoreNav({ setCurrentStore, setChosenStore, currentStore, setStoreView,viewingStore }) {
   function handleHome() {
     fetch("/endStore", {
       method: "DELETE",
     }).then((res) => {
       console.log(res);
-      setCurrentStore(null);
+      setStoreView(false)
+      // setCurrentStore(null);
+      // setChosenStore({ name: "" });
     });
   }
-  
+
+  if (viewingStore === false) {
+    return <Navigate to={"/"} />;
+  }
+
   return (
     <nav id="store_nav">
       <div className="navleft">
@@ -18,9 +24,10 @@ function StoreNav({ setCurrentStore }) {
       </div>
       <div className="navcenter"></div>
       <div className="navright">
-        <Link to="/" style={{ textDecoration: "none" }} onClick={handleHome}>
-          <button id="home"> Home </button>
-        </Link>
+        <button onClick={handleHome} id="home">
+          {" "}
+          Home{" "}
+        </button>
       </div>
     </nav>
   );
