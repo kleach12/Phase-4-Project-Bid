@@ -4,6 +4,7 @@ import Signup from "./Signup/Signup";
 import Profile from "./Profile/Profile";
 import DeleteProfile from "./DeleteProfile/DeleteProfile";
 import Store from "./Store/Store";
+import StoreOrUser from "./StoreOrUser/StoreOrUser";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -23,7 +24,6 @@ function App() {
         response.json().then((data) => {
           setUser(data);
           setSignedIn(true);
-          // console.log(data)
         });
       }
     });
@@ -59,6 +59,12 @@ function App() {
   return (
     <div>
       <Routes>
+      <Route
+          path="/storeoruser"
+          element={
+           < StoreOrUser/>
+          }
+        />
         <Route
           path="/signup"
           element={

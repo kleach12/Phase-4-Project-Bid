@@ -4,7 +4,7 @@ import Typed from "react-typed";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
-function Signup({ setSignedIn, signedIn,setUser }) {
+function Signup({ setSignedIn, signedIn, setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passconfirm, setPassConfirm] = useState("");

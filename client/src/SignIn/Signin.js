@@ -1,6 +1,6 @@
 import "./Signin.css";
 import Typed from "react-typed";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useState } from "react";
 
 function Signin({ setSignedIn, signedIn, setUser }) {
@@ -42,7 +42,9 @@ function Signin({ setSignedIn, signedIn, setUser }) {
 
   return (
     <div id="signintop">
+      <Link to="/">
         <button className="exit"> Exit</button>
+      </Link>
       <div id="login">
         <div className="exit"></div>
         <div className="container">

@@ -1,4 +1,10 @@
-#login {
+
+#choosetop{
+  background-color: #000000;
+  overflow-y: hidden;
+}
+
+#choose {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,22 +17,17 @@
   overflow-y: hidden;
 }
 
-.container{
-  display: grid;
+#choose_container{
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.choose_button{
+  padding: 4px;
+  width: 100%;
+}
+
 .welcome{
   font-size: 40px;
-}
-
-.exit{
-  float: right;
-  font-family: "Silkscreen", cursive;
-}
-
-#signintop{
-  background-color: #000000;
-  overflow-y: hidden;
 }
