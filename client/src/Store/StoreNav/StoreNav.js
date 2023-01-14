@@ -8,29 +8,44 @@ function StoreNav({ setCurrentStore, setChosenStore, currentStore, setStoreView,
     }).then((res) => {
       console.log(res);
       setStoreView(false)
+      // localStorage.clear()
       // setCurrentStore(null);
       // setChosenStore({ name: "" });
     });
   }
 
-  if (viewingStore === false) {
-    return <Navigate to={"/"} />;
+  if (viewingStore) {
+    // return <Navigate to={"/"} />;
+    return (
+      <nav id="store_nav">
+        <div className="navleft">
+          <h1>Bid</h1>
+        </div>
+        <div className="navcenter"></div>
+        <div className="navright">
+          <button onClick={handleHome} id="home">
+            {" "}
+            Home{" "}
+          </button>
+        </div>
+      </nav>
+    );
   }
-
-  return (
-    <nav id="store_nav">
-      <div className="navleft">
-        <h1>Bid</h1>
-      </div>
-      <div className="navcenter"></div>
-      <div className="navright">
-        <button onClick={handleHome} id="home">
-          {" "}
-          Home{" "}
-        </button>
-      </div>
-    </nav>
-  );
+  return <Navigate to={"/"} />;
+//   return (
+//     <nav id="store_nav">
+//       <div className="navleft">
+//         <h1>Bid</h1>
+//       </div>
+//       <div className="navcenter"></div>
+//       <div className="navright">
+//         <button onClick={handleHome} id="home">
+//           {" "}
+//           Home{" "}
+//         </button>
+//       </div>
+//     </nav>
+//   );
 }
 
 export default StoreNav;

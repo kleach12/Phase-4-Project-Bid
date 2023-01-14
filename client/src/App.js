@@ -15,13 +15,15 @@ function App() {
   const [currentStore, setCurrentStore] = useState(null);
   const [chosenStore, setChosenStore] = useState({ name: "" });
   const [viewingStore, setStoreView] = useState(false);
-
+  const store = JSON.parse(localStorage.getItem('store'))
+  console.log(viewingStore)
   useEffect(() => {
     fetch("/me").then((response) => {
       if (response.ok) {
         response.json().then((data) => {
           setUser(data);
           setSignedIn(true);
+          // console.log(data)
         });
       }
     });
@@ -41,8 +43,14 @@ function App() {
     fetch("/visitstore").then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          console.log(data);
-          setCurrentStore(data);
+          // setCurrentStore(data);
+          localStorage.setItem("store", JSON.stringify(data));
+          if(data.error){
+            setStoreView(false)
+          }else{
+            setStoreView(true)
+          }
+          console.log(data.error)
         });
       }
     });

@@ -2,6 +2,7 @@ import "./Home.css";
 import Navbar from "./Navbar/Navbar";
 import Carosel from "./Carosel/Carosel";
 import LoggedInNav from "./LoggedInNav/LoggedInNav";
+import { Navigate } from "react-router-dom";
 
 function Home({
   signedIn,
@@ -13,6 +14,9 @@ function Home({
   viewingStore,
   setStoreView,
 }) {
+
+  // const store = JSON.parse(localStorage.getItem('store'))
+
   const loggedInUser = (
     <div>
       <LoggedInNav setSignedIn={setSignedIn} />
@@ -40,7 +44,6 @@ function Home({
       />
     </div>
   );
-
   return signedIn ? loggedInUser : emptyUser;
 }
 
