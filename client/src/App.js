@@ -5,9 +5,12 @@ import Profile from "./Profile/Profile";
 import DeleteProfile from "./DeleteProfile/DeleteProfile";
 import Store from "./Store/Store";
 import StoreOrUser from "./StoreOrUser/StoreOrUser";
+import StoreSignIn from "./StoreSignIn/StoreSignIn";
+import SignUpChoice from "./SignUpChoice/SignUpChoice";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -66,6 +69,12 @@ function App() {
           }
         />
         <Route
+          path="/signupchoice"
+          element={
+           < SignUpChoice/>
+          }
+        />
+        <Route
           path="/signup"
           element={
             <Signup
@@ -79,6 +88,16 @@ function App() {
           path="/signin"
           element={
             <Signin
+              setSignedIn={setSignedIn}
+              signedIn={signedIn}
+              setUser={setUser}
+            />
+          }
+        />
+        <Route
+          path="/storesignin"
+          element={
+            <StoreSignIn
               setSignedIn={setSignedIn}
               signedIn={signedIn}
               setUser={setUser}

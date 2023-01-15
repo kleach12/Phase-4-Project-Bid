@@ -43,7 +43,7 @@ function Home({
         setStoreView={setStoreView}
       />
     </div>
-  );
+  ); 
   return signedIn ? loggedInUser : emptyUser;
 }
 

@@ -25,7 +25,7 @@ class StoresController < ApplicationController
   private 
 
   def store_params 
-    params.permit(:name, :picture)
+    params.permit(:name, :picture, :password, :password_confirmation)
   end 
 
   def find_store

@@ -12,7 +12,7 @@ function Navbar() {
         <Link to='/storeoruser' style={{ textDecoration: 'none' }}>
           <button id="signin"> Sign in </button>
         </Link>
-        <Link to='/signup' style={{ textDecoration: 'none' }}>
+        <Link to='/signupchoice' style={{ textDecoration: 'none' }}>
           <button id="signup"> Sign up </button>
         </Link>
       </div>

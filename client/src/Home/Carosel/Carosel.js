@@ -17,7 +17,7 @@ function Carosel({
       const formData = {
         name: currStore.name,
       };
-
+      // change this to show instead of a post
       fetch("/currstore", {
         method: "POST",
         headers: {

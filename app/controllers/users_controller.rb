@@ -49,5 +49,4 @@ class UsersController < ApplicationController
     render json: { error: "Bird not found" }, status: :not_found
   end
 
-
 end

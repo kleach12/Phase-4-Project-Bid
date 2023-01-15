@@ -1,8 +1,8 @@
-import "./StoreOrUser.css";
+import "./SignUpChoice.css";
 import { Link } from "react-router-dom";
 import Typed from "react-typed";
 
-function StoreOrUser() {
+function SignUpChoice() {
   return (
     <div id="choosetop">
       <Link to="/">
@@ -23,11 +23,11 @@ function StoreOrUser() {
           />
         </div>
         <div>
-        <Link to="/signin">
-            <button className="choose_button"> User Sign In</button>
+        <Link to="/signup">
+            <button className="choose_button"> User Sign Up</button>
           </Link>
           <Link to="/storesignin">
-            <button className="choose_button"> Store Sign In</button>
+            <button className="choose_button"> Store Sign Up</button>
           </Link>
         </div>
       </div>
@@ -58,4 +58,4 @@ function StoreOrUser() {
   );
 }
 
-export default StoreOrUser;
+export default SignUpChoice;
