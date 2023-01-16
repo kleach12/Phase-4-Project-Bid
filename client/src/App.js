@@ -43,22 +43,21 @@ function App() {
     });
   }, []);
 
-  useEffect(() => {
-    fetch("/visitstore").then((response) => {
-      if (response.ok) {
-        response.json().then((data) => {
-          // setCurrentStore(data);
-          localStorage.setItem("store", JSON.stringify(data));
-          if(data.error){
-            setStoreView(false)
-          }else{
-            setStoreView(true)
-          }
-          console.log(data.error)
-        });
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   fetch("/visitstore").then((response) => {
+  //     if (response.ok) {
+  //       response.json().then((data) => {
+  //         localStorage.setItem("store", JSON.stringify(data));
+  //         if(data.error){
+  //           setStoreView(false)
+  //         }else{
+  //           setStoreView(true)
+  //         }
+  //         console.log(data.error)
+  //       });
+  //     }
+  //   });
+  // }, []);
 
   return (
     <div>

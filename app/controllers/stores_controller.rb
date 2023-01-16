@@ -22,6 +22,15 @@ class StoresController < ApplicationController
     end
   end
 
+  def show_store
+    store = find_store
+    if store 
+      render json: store
+    else 
+      render json: {error: "This store does not exisit"}, status: :ok
+    end
+  end
+
   private 
 
   def store_params 
@@ -29,7 +38,7 @@ class StoresController < ApplicationController
   end 
 
   def find_store
-    Store.find_by(params[:id])
+    Store.find(params[:id])
   end 
 
 end

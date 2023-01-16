@@ -12,30 +12,18 @@ function Carosel({
   viewingStore,
   setStoreView,
 }) {
-  const listOfStores = [
-    { id: 1, name: "KALE", picture: "aklfjdlkasjfldksajf;klsd" },
-    { id: 2, name: "Clarissa", picture: "aklfjdlkasjfldksajf;klsd" },
-    { id: 3, name: "Taryn", picture: "aklfjdlkasjfldksajf;klsd" },
-  ];
+
   function handleStore(currStore) {
-    // setChosenStore({ name: currStore.name });
-    // if (chosenStore.name !== "") {
-    const formData = {
-      name: currStore.name,
-    };
-    // change this to show instead of a post
-    fetch("/currstore", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    }).then((response) => {
+    console.log(currStore)
+    console.log(currStore.id)
+
+    fetch(`/showingstore/${currStore.id}`).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
           setStoreView(true);
+          console.log(data)
           localStorage.setItem("store", JSON.stringify(data));
-          setCurrentStore(data);
+          // setCurrentStore(data);
         });
       }
     });

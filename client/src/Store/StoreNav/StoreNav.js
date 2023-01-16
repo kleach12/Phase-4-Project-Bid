@@ -8,7 +8,7 @@ function StoreNav({ setCurrentStore, setChosenStore, currentStore, setStoreView,
     }).then((res) => {
       console.log(res);
       setStoreView(false)
-      // localStorage.clear()
+      localStorage.clear()
       // setCurrentStore(null);
       // setChosenStore({ name: "" });
     });

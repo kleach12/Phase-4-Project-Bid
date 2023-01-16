@@ -9,7 +9,7 @@ function Store({
   viewingStore,
 }) {
   const store = JSON.parse(localStorage.getItem("store"));
-  console.log(store.name);
+  console.log(store);
   if (viewingStore) {
     // return <Navigate to={"/"} />;
     return (

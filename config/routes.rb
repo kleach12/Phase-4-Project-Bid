@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post "/currstore", to: "store_session#create"
   delete "/endStore", to: "store_session#destroy"
   get "/visitstore", to: "stores#show"
+  get "/showingstore/:id", to: "stores#show_store"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
