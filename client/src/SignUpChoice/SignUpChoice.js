@@ -26,34 +26,12 @@ function SignUpChoice() {
         <Link to="/signup">
             <button className="choose_button"> User Sign Up</button>
           </Link>
-          <Link to="/">
+          <Link to="/storesignup">
             <button className="choose_button"> Store Sign Up</button>
           </Link>
         </div>
       </div>
       </div>
-      {/* <div id="choose">
-        <div className="exit"></div>
-        <div className="container">
-          <Typed
-            strings={[
-              "Welcome back!",
-              "Are you a Buyer or Supplier",
-            ]}
-            typeSpeed={40}
-            backSpeed={40}
-            className="welcome"
-          />
-        </div>
-        <div>
-        <Link to="/signin">
-            <button className="choose_button"> User Sign In</button>
-          </Link>
-          <Link to="/">
-            <button className="choose_button"> Store Sign In</button>
-          </Link>
-        </div>
-      </div> */}
     </div>
   );
 }

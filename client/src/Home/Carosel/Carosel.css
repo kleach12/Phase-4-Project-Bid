@@ -3,13 +3,14 @@
  align-items: center;
  justify-content: center;
  padding: 25px;
+ height: 400px;
  background-color: black;
 }
 
 .caro_item {
-  display: flex;
-  align-items: center;
-  justify-content: center;  
+  display: flex ;
+  align-items: center !important;
+  justify-content: center!important;  
 }
 
 #store_name{

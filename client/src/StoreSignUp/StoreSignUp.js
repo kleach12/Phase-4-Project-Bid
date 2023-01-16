@@ -4,13 +4,14 @@ import Typed from "react-typed";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
-function StoreSignUp({ setSignedIn, signedIn, setUser }) {
-  const [username, setUsername] = useState("");
+function StoreSignUp({  signedIn, newStore }) {
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [passconfirm, setPassConfirm] = useState("");
+  const [picture, setPicture] = useState("");
 
   function handleUsername(e) {
-    setUsername(e.target.value);
+    setName(e.target.value);
   }
 
   function handlePassword(e) {
@@ -21,14 +22,19 @@ function StoreSignUp({ setSignedIn, signedIn, setUser }) {
     setPassConfirm(e.target.value);
   }
 
+  function handlePicture(e) {
+    setPicture(e.target.value);
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     const formData = {
-      username: username,
+      name: name,
+      picture: picture,
       password: password,
       password_confirmation: passconfirm,
     };
-    fetch("/users", {
+    fetch("/stores", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,8 +43,8 @@ function StoreSignUp({ setSignedIn, signedIn, setUser }) {
     }).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          setSignedIn(true);
-          setUser(data);
+          console.log(data)
+        newStore(data)
         });
       }
     });
@@ -67,7 +73,7 @@ function StoreSignUp({ setSignedIn, signedIn, setUser }) {
             backSpeed={50}
             attr="placeholder"
           >
-            <input value={username} onChange={handleUsername} type="text" />
+            <input value={name} onChange={handleUsername} type="text" />
           </Typed>
           <Typed
             strings={["Enter Password"]}
@@ -96,9 +102,9 @@ function StoreSignUp({ setSignedIn, signedIn, setUser }) {
             attr="placeholder"
           >
             <input
-              value={passconfirm}
-              onChange={handlePasswordConfirm}
-              type="password"
+              value={picture}
+              onChange={handlePicture}
+              type="text"
             />
           </Typed>
           <button onClick={handleSubmit}> Create Account</button>

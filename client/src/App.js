@@ -20,7 +20,7 @@ function App() {
   const [currentStore, setCurrentStore] = useState(null);
   const [chosenStore, setChosenStore] = useState({ name: "" });
   const [viewingStore, setStoreView] = useState(false);
-  const store = JSON.parse(localStorage.getItem('store'))
+  // const store = JSON.parse(localStorage.getItem('store'))
  
   useEffect(() => {
     fetch("/me").then((response) => {
@@ -58,6 +58,10 @@ function App() {
   //     }
   //   });
   // }, []);
+
+  function newStore(store) {
+    holdStores([...allStores, store ])
+  }
 
   return (
     <div>
@@ -105,12 +109,13 @@ function App() {
           }
         />
         <Route
-          path="/storesignin"
+          path="/storesignup"
           element={
             <StoreSignUp
               setSignedIn={setSignedIn}
               signedIn={signedIn}
               setUser={setUser}
+              newStore = {newStore}
             />
           }
         />
