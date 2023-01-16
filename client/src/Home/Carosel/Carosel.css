@@ -6,7 +6,7 @@
  background-color: black;
 }
 
-#caro_item {
+.caro_item {
   display: flex;
   align-items: center;
   justify-content: center;  

@@ -26,7 +26,7 @@ function SignUpChoice() {
         <Link to="/signup">
             <button className="choose_button"> User Sign Up</button>
           </Link>
-          <Link to="/storesignin">
+          <Link to="/">
             <button className="choose_button"> Store Sign Up</button>
           </Link>
         </div>

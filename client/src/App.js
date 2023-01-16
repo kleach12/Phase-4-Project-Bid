@@ -7,6 +7,7 @@ import Store from "./Store/Store";
 import StoreOrUser from "./StoreOrUser/StoreOrUser";
 import StoreSignIn from "./StoreSignIn/StoreSignIn";
 import SignUpChoice from "./SignUpChoice/SignUpChoice";
+import StoreSignUp from "./StoreSignUp/StoreSignUp";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -20,7 +21,7 @@ function App() {
   const [chosenStore, setChosenStore] = useState({ name: "" });
   const [viewingStore, setStoreView] = useState(false);
   const store = JSON.parse(localStorage.getItem('store'))
-  console.log(viewingStore)
+ 
   useEffect(() => {
     fetch("/me").then((response) => {
       if (response.ok) {
@@ -98,6 +99,16 @@ function App() {
           path="/storesignin"
           element={
             <StoreSignIn
+              setSignedIn={setSignedIn}
+              signedIn={signedIn}
+              setUser={setUser}
+            />
+          }
+        />
+        <Route
+          path="/storesignin"
+          element={
+            <StoreSignUp
               setSignedIn={setSignedIn}
               signedIn={signedIn}
               setUser={setUser}
