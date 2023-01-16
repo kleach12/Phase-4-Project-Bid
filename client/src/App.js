@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [storeOwner, setStoreOwner] = useState(null)
   const [signedIn, setSignedIn] = useState(false);
   const [allStores, holdStores] = useState(null);
   const [currentStore, setCurrentStore] = useState(null);
@@ -104,7 +105,7 @@ function App() {
             <StoreSignIn
               setSignedIn={setSignedIn}
               signedIn={signedIn}
-              setUser={setUser}
+              setStoreOwner = {setStoreOwner}
             />
           }
         />
@@ -114,7 +115,7 @@ function App() {
             <StoreSignUp
               setSignedIn={setSignedIn}
               signedIn={signedIn}
-              setUser={setUser}
+              setStoreOwner = {setStoreOwner}
               newStore = {newStore}
             />
           }

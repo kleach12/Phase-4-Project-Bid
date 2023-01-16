@@ -3,12 +3,12 @@ import Typed from "react-typed";
 import { Link, Navigate } from "react-router-dom";
 import { useState } from "react";
 
-function StoreSignIn({ setSignedIn, signedIn, setUser }) {
-  const [username, setUsername] = useState("");
+function StoreSignIn({ setStoreOwner, signedIn, setUser }) {
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleUsername(e) {
-    setUsername(e.target.value);
+  function handleName(e) {
+    setName(e.target.value);
   }
 
   function handlePassword(e) {
@@ -18,10 +18,10 @@ function StoreSignIn({ setSignedIn, signedIn, setUser }) {
   function handleSubmit(e) {
     e.preventDefault();
     const formData = {
-      username: username,
+      name: name,
       password: password,
     };
-    fetch("/login", {
+    fetch("/currstore", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,8 +30,9 @@ function StoreSignIn({ setSignedIn, signedIn, setUser }) {
     }).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
+          console.log(data)
           // setSignedIn(true);
-          // setUser(data);
+          // setStoreOwner(data);
         });
       }
     });
@@ -60,12 +61,12 @@ function StoreSignIn({ setSignedIn, signedIn, setUser }) {
           />
 
           <Typed
-            strings={["Enter username"]}
+            strings={["Enter Store Name"]}
             typeSpeed={40}
             backSpeed={50}
             attr="placeholder"
           >
-            <input type="text" onChange={handleUsername} />
+            <input type="text" onChange={handleName} />
           </Typed>
           <Typed
             strings={["Enter Password"]}

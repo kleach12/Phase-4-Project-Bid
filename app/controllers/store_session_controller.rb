@@ -1,7 +1,7 @@
 class StoreSessionController < ApplicationController
   def create
     store = Store.find_by(name:params[:name])
-    if store&authenticate(params[:password])
+    if store&.authenticate(params[:password])
       session[:store_id] = store.id 
       render json: store, status: :created 
     else

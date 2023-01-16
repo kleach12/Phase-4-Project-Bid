@@ -1,10 +1,10 @@
 import { useState } from "react";
-import './StoreSignUp.css'
+import "./StoreSignUp.css";
 import Typed from "react-typed";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
-function StoreSignUp({  signedIn, newStore }) {
+function StoreSignUp({ setStoreOwner, signedIn, newStore }) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [passconfirm, setPassConfirm] = useState("");
@@ -43,8 +43,9 @@ function StoreSignUp({  signedIn, newStore }) {
     }).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          console.log(data)
-        newStore(data)
+          console.log(data);
+          setStoreOwner(data)
+          newStore(data);
         });
       }
     });
@@ -101,11 +102,7 @@ function StoreSignUp({  signedIn, newStore }) {
             backSpeed={50}
             attr="placeholder"
           >
-            <input
-              value={picture}
-              onChange={handlePicture}
-              type="text"
-            />
+            <input value={picture} onChange={handlePicture} type="text" />
           </Typed>
           <button onClick={handleSubmit}> Create Account</button>
         </div>
