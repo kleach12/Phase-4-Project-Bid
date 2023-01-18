@@ -3,7 +3,7 @@ import Typed from "react-typed";
 import { Link, Navigate } from "react-router-dom";
 import { useState } from "react";
 
-function StoreSignIn({ setStoreOwner, signedIn, setUser }) {
+function StoreSignIn({ setStoreOwner, signedIn, setSignedIn }) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -31,8 +31,8 @@ function StoreSignIn({ setStoreOwner, signedIn, setUser }) {
       if (response.ok) {
         response.json().then((data) => {
           console.log(data)
-          // setSignedIn(true);
-          // setStoreOwner(data);
+          setSignedIn(true);
+          setStoreOwner(data);
         });
       }
     });

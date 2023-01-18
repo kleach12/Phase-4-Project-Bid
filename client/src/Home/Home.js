@@ -13,13 +13,23 @@ function Home({
   chosenStore,
   viewingStore,
   setStoreView,
+  user,
+  setUser,
+  storeOwner,
+  setStoreOwner
 }) {
-
   // const store = JSON.parse(localStorage.getItem('store'))
 
   const loggedInUser = (
     <div>
-      <LoggedInNav setSignedIn={setSignedIn} />
+      <LoggedInNav
+        setSignedIn={setSignedIn}
+        user={user}
+        storeOwner={storeOwner}
+        signedIn = {signedIn}
+        setStoreOwner = {setStoreOwner}
+        setUser = {setUser}
+      />
       <Carosel
         allStores={allStores}
         setCurrentStore={setCurrentStore}
@@ -43,7 +53,7 @@ function Home({
         setStoreView={setStoreView}
       />
     </div>
-  ); 
+  );
   return signedIn ? loggedInUser : emptyUser;
 }
 

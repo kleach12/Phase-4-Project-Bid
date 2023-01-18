@@ -12,17 +12,15 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-
 function App() {
   const [user, setUser] = useState(null);
-  const [storeOwner, setStoreOwner] = useState(null)
+  const [storeOwner, setStoreOwner] = useState(null);
   const [signedIn, setSignedIn] = useState(false);
   const [allStores, holdStores] = useState(null);
   const [currentStore, setCurrentStore] = useState(null);
   const [chosenStore, setChosenStore] = useState({ name: "" });
   const [viewingStore, setStoreView] = useState(false);
-  // const store = JSON.parse(localStorage.getItem('store'))
- 
+  console.log(storeOwner)
   useEffect(() => {
     fetch("/me").then((response) => {
       if (response.ok) {
@@ -44,41 +42,15 @@ function App() {
     });
   }, []);
 
-  // useEffect(() => {
-  //   fetch("/visitstore").then((response) => {
-  //     if (response.ok) {
-  //       response.json().then((data) => {
-  //         localStorage.setItem("store", JSON.stringify(data));
-  //         if(data.error){
-  //           setStoreView(false)
-  //         }else{
-  //           setStoreView(true)
-  //         }
-  //         console.log(data.error)
-  //       });
-  //     }
-  //   });
-  // }, []);
-
   function newStore(store) {
-    holdStores([...allStores, store ])
+    holdStores([...allStores, store]);
   }
 
   return (
     <div>
       <Routes>
-      <Route
-          path="/storeoruser"
-          element={
-           < StoreOrUser/>
-          }
-        />
-        <Route
-          path="/signupchoice"
-          element={
-           < SignUpChoice/>
-          }
-        />
+        <Route path="/storeoruser" element={<StoreOrUser />} />
+        <Route path="/signupchoice" element={<SignUpChoice />} />
         <Route
           path="/signup"
           element={
@@ -105,7 +77,7 @@ function App() {
             <StoreSignIn
               setSignedIn={setSignedIn}
               signedIn={signedIn}
-              setStoreOwner = {setStoreOwner}
+              setStoreOwner={setStoreOwner}
             />
           }
         />
@@ -115,15 +87,21 @@ function App() {
             <StoreSignUp
               setSignedIn={setSignedIn}
               signedIn={signedIn}
-              setStoreOwner = {setStoreOwner}
-              newStore = {newStore}
+              setStoreOwner={setStoreOwner}
+              newStore={newStore}
             />
           }
         />
         <Route
           path="/profile"
           element={
-            <Profile user={user} setUser={setUser} setSignedIn={setSignedIn} />
+            <Profile
+              user={user}
+              setUser={setUser}
+              setSignedIn={setSignedIn}
+              storeOwner={storeOwner}
+              setStoreOwner={setStoreOwner}
+            />
           }
         />
         <Route
@@ -154,6 +132,9 @@ function App() {
           element={
             <Home
               user={user}
+              setUser = {setUser}
+              storeOwner={storeOwner}
+              setStoreOwner = {setStoreOwner}
               signedIn={signedIn}
               setSignedIn={setSignedIn}
               allStores={allStores}

@@ -7,9 +7,10 @@ function Store({
   setChosenStore,
   setStoreView,
   viewingStore,
+  storeOwner
 }) {
   const store = JSON.parse(localStorage.getItem("store"));
-  console.log(store);
+  console.log(storeOwner);
   if (viewingStore) {
     // return <Navigate to={"/"} />;
     return (
@@ -21,7 +22,7 @@ function Store({
           setStoreView={setStoreView}
           viewingStore={viewingStore}
         />
-        <StoreBanner currentStore={currentStore} />
+        <StoreBanner />
       </div>
     );
   }

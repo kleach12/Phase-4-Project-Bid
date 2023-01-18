@@ -1,7 +1,8 @@
 import "./ProfileNavbar.css";
 import { Link } from "react-router-dom";
 
-function ProfileNavbar() {
+function ProfileNavbar({storeOwner}) {
+  console.log(storeOwner)
   return (
     <nav id="loggedInNav">
       <div className="navleft">
