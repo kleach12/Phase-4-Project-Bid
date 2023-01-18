@@ -31,6 +31,12 @@ class StoresController < ApplicationController
     end
   end
 
+  def update 
+    store = Store.find(params[:id])
+    store.update(store_params )
+    render json: store
+  end
+
   private 
 
   def store_params 
