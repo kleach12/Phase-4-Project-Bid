@@ -42,6 +42,17 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    fetch("/storeme").then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          setStoreOwner(data);
+          setSignedIn(true);
+        });
+      }
+    });
+  }, []);
+
   function newStore(store) {
     holdStores([...allStores, store]);
   }
