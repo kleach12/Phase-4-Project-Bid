@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 import { useState } from "react";
 
-function StoreBanner({ storeOwner, setStoreOwner }) {
+function StoreBanner({ storeOwner, setStoreOwner, newStore }) {
   const [editMode, setEditMode] = useState(false);
   const [newPicture, setNewPicture] = useState(null);
   const store = JSON.parse(localStorage.getItem("store"));
@@ -41,7 +41,7 @@ function StoreBanner({ storeOwner, setStoreOwner }) {
         <div id="edit_banner">
           <FontAwesomeIcon icon={faPenToSquare} onClick={editPicture} />
         </div>
-        <img id="banner_edit" src={storeOwner.picture} />
+        <img id="banner_edit" src={storeOwner.picture} alt={storeOwner.name}/>
         <form id="banner_form">
           <h3> New Store Picture</h3>
           <input id="edit_input" type="text" onChange={handleNewPicture} />
@@ -59,13 +59,13 @@ function StoreBanner({ storeOwner, setStoreOwner }) {
         <div id="edit_banner">
         <FontAwesomeIcon icon={faPenToSquare} onClick={editPicture} />
       </div>
-        <img id="banner_current" src={storeOwner.picture} />
+        <img id="banner_current" src={storeOwner.picture} alt={storeOwner.name}/>
       </div>
     );
   }
   return (
     <div id="store_banner">
-      <img id="banner_current" src={store.picture} />
+      <img id="banner_current" src={store.picture} alt={store.name}/>
     </div>
   );
 }

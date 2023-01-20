@@ -1,9 +1,16 @@
 import ProfileNavbar from "./ProfileNav/ProfileNavbar";
 import Banner from "./Banner/Banner";
-import Profile_Pic from "./Profile_Pic/Profile_Pic";
+import Profile_Pic from "./ProfilePic/ProfilePic";
 import StoreBanner from "../Store/StoreBanner/StoreBanner";
 
-function Profile({ user, setUser, setSignedIn, storeOwner, setStoreOwner }) {
+function Profile({
+  user,
+  setUser,
+  setSignedIn,
+  storeOwner,
+  setStoreOwner,
+  newStore,
+}) {
   // fix the issue with refreshing and losing data also add a function that will allow user to edit there banner image. also add profile picture feat
   // The issue was my code was throwing errors because it was trying to mount the component without data. A simple if else statement waiting for the data fixes this.
   console.log(storeOwner);
@@ -21,7 +28,11 @@ function Profile({ user, setUser, setSignedIn, storeOwner, setStoreOwner }) {
     return (
       <div>
         <ProfileNavbar storeOwner={storeOwner} setSignedIn={setSignedIn} />
-        <StoreBanner storeOwner={storeOwner} setStoreOwner={setStoreOwner} />
+        <StoreBanner
+          storeOwner={storeOwner}
+          setStoreOwner={setStoreOwner}
+          newStore={newStore}
+        />
       </div>
     );
   }

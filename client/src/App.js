@@ -20,7 +20,15 @@ function App() {
   const [currentStore, setCurrentStore] = useState(null);
   const [chosenStore, setChosenStore] = useState({ name: "" });
   const [viewingStore, setStoreView] = useState(false);
-  console.log(storeOwner)
+  function getStore() {
+    fetch("/stores").then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          holdStores(data);
+        });
+      }
+    });
+  }
   useEffect(() => {
     fetch("/me").then((response) => {
       if (response.ok) {
@@ -33,13 +41,20 @@ function App() {
   }, []);
 
   useEffect(() => {
-    fetch("/stores").then((response) => {
-      if (response.ok) {
-        response.json().then((data) => {
-          holdStores(data);
-        });
-      }
-    });
+    getStore();
+    // fetch("/stores").then((response) => {
+    //   if (response.ok) {
+    //     response.json().then((data) => {
+    //       holdStores(data);
+    //     });
+    //   }
+    // });
+
+    const interval = setInterval(() => {
+      getStore();
+    }, 60000);
+
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -51,7 +66,7 @@ function App() {
         });
       }
     });
-  }, []);
+  }, [allStores]);
 
   function newStore(store) {
     holdStores([...allStores, store]);
@@ -112,6 +127,7 @@ function App() {
               setSignedIn={setSignedIn}
               storeOwner={storeOwner}
               setStoreOwner={setStoreOwner}
+              newStore={newStore}
             />
           }
         />
@@ -143,9 +159,9 @@ function App() {
           element={
             <Home
               user={user}
-              setUser = {setUser}
+              setUser={setUser}
               storeOwner={storeOwner}
-              setStoreOwner = {setStoreOwner}
+              setStoreOwner={setStoreOwner}
               signedIn={signedIn}
               setSignedIn={setSignedIn}
               allStores={allStores}
