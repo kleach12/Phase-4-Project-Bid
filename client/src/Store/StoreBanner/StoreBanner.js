@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-regular-svg-icons";
 import { useState } from "react";
 
-function StoreBanner({ storeOwner, setStoreOwner, newStore }) {
+function StoreBanner({ storeOwner, setStoreOwner, triggerRender,setTriggerRender }) {
   const [editMode, setEditMode] = useState(false);
   const [newPicture, setNewPicture] = useState(null);
   const store = JSON.parse(localStorage.getItem("store"));
@@ -33,6 +33,7 @@ function StoreBanner({ storeOwner, setStoreOwner, newStore }) {
         console.log(data);
         setStoreOwner(data);
         setEditMode(false);
+        setTriggerRender(!triggerRender)
       });
   }
   if (editMode) {

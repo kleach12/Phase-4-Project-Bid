@@ -9,7 +9,8 @@ function Profile({
   setSignedIn,
   storeOwner,
   setStoreOwner,
-  newStore,
+  triggerRender,
+  setTriggerRender
 }) {
   // fix the issue with refreshing and losing data also add a function that will allow user to edit there banner image. also add profile picture feat
   // The issue was my code was throwing errors because it was trying to mount the component without data. A simple if else statement waiting for the data fixes this.
@@ -31,7 +32,8 @@ function Profile({
         <StoreBanner
           storeOwner={storeOwner}
           setStoreOwner={setStoreOwner}
-          newStore={newStore}
+          triggerRender={triggerRender}
+          setTriggerRender = {setTriggerRender}
         />
       </div>
     );

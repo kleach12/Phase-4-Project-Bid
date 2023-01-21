@@ -20,6 +20,7 @@ function App() {
   const [currentStore, setCurrentStore] = useState(null);
   const [chosenStore, setChosenStore] = useState({ name: "" });
   const [viewingStore, setStoreView] = useState(false);
+  const [triggerRender, setTriggerRender] = useState(false)
   function getStore() {
     fetch("/stores").then((response) => {
       if (response.ok) {
@@ -50,12 +51,12 @@ function App() {
     //   }
     // });
 
-    const interval = setInterval(() => {
-      getStore();
-    }, 60000);
+    // const interval = setInterval(() => {
+    //   getStore();
+    // }, 60000);
 
-    return () => clearInterval(interval);
-  }, []);
+    // return () => clearInterval(interval);
+  }, [triggerRender]);
 
   useEffect(() => {
     fetch("/storeme").then((response) => {
@@ -127,7 +128,8 @@ function App() {
               setSignedIn={setSignedIn}
               storeOwner={storeOwner}
               setStoreOwner={setStoreOwner}
-              newStore={newStore}
+              triggerRender={triggerRender}
+              setTriggerRender = {setTriggerRender}
             />
           }
         />
