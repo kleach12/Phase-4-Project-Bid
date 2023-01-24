@@ -1,0 +1,12 @@
+
+#pro_store_name{
+  font-size: 75px;
+  font-weight: 500;
+  font-family: "Silkscreen", cursive;
+  color: black;
+}
+
+.btn-custom{
+  background-color: #613dc1;
+  color: white;
+}

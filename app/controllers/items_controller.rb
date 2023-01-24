@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+
   def index 
     render json: Item.all
   end
@@ -14,7 +15,7 @@ class ItemsController < ApplicationController
 
   def create 
     item = Item.create(item_params)
-    if item.valid?
+    if item
       render json: item, status: :created
     else 
       render json: {errors: item.errors.full_messages}, status: :unprocessable_entity
@@ -22,8 +23,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    user = find_user
-    user.destroy
+    item = find_item
+    item.destroy
     head :no_content
   end
 
@@ -35,10 +36,10 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.permit(:name, :price, :user_id, :picture)
+    params.permit(:name, :price, :user_id, :picture, :store_id)
   end
 
   def render_not_found_response
-    render json: { error: "Bird not found" }, status: :not_found
+    render json: { error: "Item not found" }, status: :not_found
   end
 end

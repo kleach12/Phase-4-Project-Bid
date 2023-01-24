@@ -8,6 +8,7 @@ import StoreOrUser from "./StoreOrUser/StoreOrUser";
 import StoreSignIn from "./StoreSignIn/StoreSignIn";
 import SignUpChoice from "./SignUpChoice/SignUpChoice";
 import StoreSignUp from "./StoreSignUp/StoreSignUp";
+import NewItem from "./Profile/NewItem/NewItem";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -20,7 +21,7 @@ function App() {
   const [currentStore, setCurrentStore] = useState(null);
   const [chosenStore, setChosenStore] = useState({ name: "" });
   const [viewingStore, setStoreView] = useState(false);
-  const [triggerRender, setTriggerRender] = useState(false)
+  const [triggerRender, setTriggerRender] = useState(false);
   function getStore() {
     fetch("/stores").then((response) => {
       if (response.ok) {
@@ -43,19 +44,6 @@ function App() {
 
   useEffect(() => {
     getStore();
-    // fetch("/stores").then((response) => {
-    //   if (response.ok) {
-    //     response.json().then((data) => {
-    //       holdStores(data);
-    //     });
-    //   }
-    // });
-
-    // const interval = setInterval(() => {
-    //   getStore();
-    // }, 60000);
-
-    // return () => clearInterval(interval);
   }, [triggerRender]);
 
   useEffect(() => {
@@ -129,7 +117,7 @@ function App() {
               storeOwner={storeOwner}
               setStoreOwner={setStoreOwner}
               triggerRender={triggerRender}
-              setTriggerRender = {setTriggerRender}
+              setTriggerRender={setTriggerRender}
             />
           }
         />
@@ -156,6 +144,7 @@ function App() {
             />
           }
         />
+        <Route path="/newitem" element={<NewItem storeOwner = {storeOwner} />} />
         <Route
           path="/"
           element={

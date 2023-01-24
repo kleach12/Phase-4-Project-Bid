@@ -1,4 +1,4 @@
-#loggedInNav{
+#loggedInNav {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -7,36 +7,45 @@
   margin: 0;
   padding: 0;
   height: 25%;
-  font-family: 'Silkscreen', cursive;
+  font-family: "Silkscreen", cursive;
   overflow: hidden;
 }
-.navleft{
+.navleft {
   display: flex;
 }
-.navcenter{
+.navcenter {
   display: flex;
 }
-.navright{
+.navright {
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin-left: 5%;
 }
-#home{
+#new_item {
   display: inline-flex;
   margin-right: 10px;
 }
 
-#home:hover{
+#new_item:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+#home {
+  display: inline-flex;
+  margin-right: 10px;
+}
+
+#home:hover {
   background-color: #000000;
   color: #ffffff;
 }
 
-#signout{
+#signout {
   display: inline;
   margin-right: 10px;
 }
-#signout:hover{
+#signout:hover {
   background-color: #000000;
   color: #ffffff;
 }
@@ -44,21 +53,21 @@
 h1 {
   padding-left: 5%;
 }
-li{
+li {
   display: flex;
 }
 
-#logo{
+#logo {
   font-size: 50px;
   text-align: left;
   padding: 0px 10px 0px 10px;
   margin: 10px;
 }
 
-.nav-items{
+.nav-items {
   display: flex;
 }
 
-a{
+a {
   text-decoration: none;
 }

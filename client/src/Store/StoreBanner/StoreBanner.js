@@ -60,7 +60,7 @@ function StoreBanner({ storeOwner, setStoreOwner, triggerRender,setTriggerRender
         <div id="edit_banner">
         <FontAwesomeIcon icon={faPenToSquare} onClick={editPicture} />
       </div>
-        <img id="banner_current" src={storeOwner.picture} alt={storeOwner.name}/>
+        <img id='pro_store_banner' src={storeOwner.picture} alt={storeOwner.name}/>
       </div>
     );
   }
