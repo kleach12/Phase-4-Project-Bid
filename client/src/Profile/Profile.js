@@ -17,8 +17,9 @@ function Profile({
 }) {
   // fix the issue with refreshing and losing data also add a function that will allow user to edit there banner image. also add profile picture feat
   // The issue was my code was throwing errors because it was trying to mount the component without data. A simple if else statement waiting for the data fixes this.
-  console.log(storeOwner);
-  if(storeOwner){
+  console.log(storeOwner );
+  console.log(user)
+  if(storeOwner || user){
     if 
     (user === null && storeOwner === null) 
    {
