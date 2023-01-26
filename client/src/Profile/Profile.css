@@ -1,12 +1,39 @@
-
-#pro_store_name{
+#pro_store_name {
   font-size: 75px;
   font-weight: 500;
   font-family: "Silkscreen", cursive;
   color: black;
 }
 
-.btn-custom{
+.btn-custom {
   background-color: #613dc1;
   color: white;
+  font-family: "Silkscreen", cursive;
+}
+
+.grid {
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+}
+
+.card-img{
+  background-color: white;
+}
+.grid-item {
+  padding: 15px;
+  margin: 20px;
+  text-align: center;
+  font-family: "Silkscreen", cursive;
+}
+
+.card-title {
+  font-size: 30px;
+  margin: 0px;
+  color: #613dc1;
+}
+
+.card-price {
+  font-size: 25px;
+  margin-bottom: 5px;
+  color: #613dc1;
 }

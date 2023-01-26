@@ -56,7 +56,7 @@ function LoggedInNav({
           <Link to="/profile" style={{ textDecoration: "none" }}>
             <button id="profile"> Profile </button>
           </Link>
-          <button id="signout" onClick={handleStoreSignOut}>
+          <button id="storeSignout" onClick={handleStoreSignOut}>
             {" "}
             Sign out{" "}
           </button>

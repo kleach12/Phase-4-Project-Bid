@@ -28,11 +28,14 @@ function Carosel({ allStores, viewingStore, setStoreView }) {
               key={store.id}
               interval={5000}
               className="caro_item"
-              // style={{ background-image: store.picture }}
               onClick={() => handleStore(store)}
-              // style={{backgroundImage: `url("${store.picture}")`}}
             >
-              <img id="slide" src={store.picture} alt={store.name} className = 'caro_img' />
+              <img
+                id="slide"
+                src={store.picture}
+                alt={store.name}
+                className="caro_img"
+              />
             </Carousel.Item>
           );
         })}

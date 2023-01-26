@@ -2,12 +2,12 @@ import { useState } from "react";
 import { Navigate, Link } from "react-router-dom";
 import Typed from "react-typed";
 
-function NewItem({storeOwner}) {
+function NewItem({ storeOwner }) {
   const [itemCreated, setItemCreatedItem] = useState(false);
   const [itemName, setItemName] = useState("");
   const [itemPrice, setItemPrice] = useState(0);
   const [itemPicture, setItemPicture] = useState("");
-  // console.log(storeOwner.id)
+
   function handleItemName(e) {
     setItemName(e.target.value);
   }
@@ -27,7 +27,7 @@ function NewItem({storeOwner}) {
       picture: itemPicture,
       price: itemPrice,
       store_id: storeOwner.id,
-      user_id: 1 
+      user_id: 1,
     };
     fetch("/items", {
       method: "POST",
@@ -39,7 +39,7 @@ function NewItem({storeOwner}) {
       if (response.ok) {
         response.json().then((data) => {
           console.log(data);
-          setItemCreatedItem(true)
+          setItemCreatedItem(true);
         });
       }
     });
@@ -76,11 +76,7 @@ function NewItem({storeOwner}) {
             backSpeed={50}
             attr="placeholder"
           >
-            <input
-              value={itemPrice}
-              onChange={handleItemPrice}
-              type="text"
-            />
+            <input value={itemPrice} onChange={handleItemPrice} type="text" />
           </Typed>
           <Typed
             strings={["Enter Img Url"]}
@@ -94,14 +90,7 @@ function NewItem({storeOwner}) {
               type="text"
             />
           </Typed>
-          {/* <Typed
-            strings={["Store Picture"]}
-            typeSpeed={40}
-            backSpeed={50}
-            attr="placeholder"
-          >
-            <input value={picture} onChange={handlePicture} type="text" />
-          </Typed> */}
+
           <button onClick={handleSubmit}> Create Item</button>
         </div>
       </form>

@@ -3,7 +3,7 @@ class StoreSessionController < ApplicationController
     store = Store.find_by(name:params[:name])
     if store&.authenticate(params[:password])
       session[:store_id] = store.id 
-      render json: store, status: :created 
+      render json: store, status: :created , include: :items
     else
       render json: {error: "Store does not exist"}, status: :unauthorized
     end

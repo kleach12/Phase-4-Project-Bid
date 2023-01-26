@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 function App() {
   const [user, setUser] = useState(null);
   const [storeOwner, setStoreOwner] = useState(null);
+  const [items, setItem] = useState(null);
   const [signedIn, setSignedIn] = useState(false);
   const [allStores, holdStores] = useState(null);
   const [currentStore, setCurrentStore] = useState(null);
@@ -43,6 +44,17 @@ function App() {
   }, []);
 
   useEffect(() => {
+    fetch("/items").then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          console.log(data);
+          setItem(data);
+        });
+      }
+    });
+  }, []);
+
+  useEffect(() => {
     getStore();
   }, [triggerRender]);
 
@@ -51,11 +63,11 @@ function App() {
       if (response.ok) {
         response.json().then((data) => {
           setStoreOwner(data);
-          setSignedIn(true);
+          // setSignedIn(true);
         });
       }
     });
-  }, [allStores]);
+  }, []);
 
   function newStore(store) {
     holdStores([...allStores, store]);
@@ -144,7 +156,7 @@ function App() {
             />
           }
         />
-        <Route path="/newitem" element={<NewItem storeOwner = {storeOwner} />} />
+        <Route path="/newitem" element={<NewItem storeOwner={storeOwner} />} />
         <Route
           path="/"
           element={
@@ -153,6 +165,7 @@ function App() {
               setUser={setUser}
               storeOwner={storeOwner}
               setStoreOwner={setStoreOwner}
+              items={items}
               signedIn={signedIn}
               setSignedIn={setSignedIn}
               allStores={allStores}
