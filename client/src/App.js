@@ -32,10 +32,12 @@ function App() {
       }
     });
   }
+  // Retrieves the logged in user 
   useEffect(() => {
     fetch("/me").then((response) => {
       if (response.ok) {
         response.json().then((data) => {
+          console.log(data)
           setUser(data);
           setSignedIn(true);
         });
@@ -43,31 +45,39 @@ function App() {
     });
   }, []);
 
+// Retrieve the logged in store runner
+  useEffect(() => {
+    fetch("/storeme").then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          if(data.error){
+            console.log(data)
+          }else{
+            setStoreOwner(data);
+            setSignedIn(true);
+          }
+          // setStoreOwner(data);
+          // setSignedIn(true);
+        });
+      }
+    });
+  }, []);
+// Retrieves the items that can be viewed on the home page
   useEffect(() => {
     fetch("/items").then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          console.log(data);
+          // console.log(data);
           setItem(data);
         });
       }
     });
   }, []);
 
+// Retrievese all the store information for users to view and access the stores
   useEffect(() => {
     getStore();
   }, [triggerRender]);
-
-  useEffect(() => {
-    fetch("/storeme").then((response) => {
-      if (response.ok) {
-        response.json().then((data) => {
-          setStoreOwner(data);
-          // setSignedIn(true);
-        });
-      }
-    });
-  }, []);
 
   function newStore(store) {
     holdStores([...allStores, store]);
