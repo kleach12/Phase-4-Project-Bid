@@ -34,7 +34,7 @@ function Carosel({ allStores, viewingStore, setStoreView }) {
                 id="slide"
                 src={store.picture}
                 alt={store.name}
-                className="caro_img"
+                className="d-block w-25 mx-auto"
               />
             </Carousel.Item>
           );

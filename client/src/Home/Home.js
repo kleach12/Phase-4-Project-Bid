@@ -40,28 +40,34 @@ function Home({
             viewingStore={viewingStore}
             setStoreView={setStoreView}
           />
-          <div className="grid-home">
-            {items.map((item) => {
-              return (
-                <Card
-                  bg={"black"}
-                  key={item.id}
-                  style={{ width: "18rem" }}
-                  className="home-item"
-                >
-                  <Card.Img
-                    variant="top"
-                    src={item.picture}
-                    className="card-img"
-                  />
-                  <Card.Body>
-                    <Card.Title className="card-title">{item.name}</Card.Title>
-                    <Card.Text className="card-price">${item.price}</Card.Text>
-                    <Button variant="custom">Buy</Button>
-                  </Card.Body>
-                </Card>
-              );
-            })}
+          <div className="center">
+            <div className="grid-home">
+              {items.map((item) => {
+                return (
+                  <Card
+                    bg={"black"}
+                    key={item.id}
+                    style={{ width: "18rem" }}
+                    className="home-item"
+                  >
+                    <Card.Img
+                      variant="top"
+                      src={item.picture}
+                      className="card-img"
+                    />
+                    <Card.Body>
+                      <Card.Title className="card-title">
+                        {item.name}
+                      </Card.Title>
+                      <Card.Text className="card-price">
+                        ${item.price}
+                      </Card.Text>
+                      <Button variant="custom">Buy</Button>
+                    </Card.Body>
+                  </Card>
+                );
+              })}
+            </div>
           </div>
         </div>
       );

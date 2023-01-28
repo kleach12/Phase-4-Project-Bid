@@ -25,7 +25,7 @@ class StoresController < ApplicationController
   def show_store
     store = find_store
     if store 
-      render json: store
+      render json: store, include: :items
     else 
       render json: {error: "This store does not exisit"}, status: :ok
     end

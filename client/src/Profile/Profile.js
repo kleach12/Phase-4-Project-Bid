@@ -17,7 +17,7 @@ function Profile({
 }) {
   // fix the issue with refreshing and losing data also add a function that will allow user to edit there banner image. also add profile picture feat
   // The issue was my code was throwing errors because it was trying to mount the component without data. A simple if else statement waiting for the data fixes this.
-  console.log(storeOwner );
+  // console.log(storeOwner );
   console.log(user)
   if(storeOwner || user){
     if 
@@ -30,6 +30,22 @@ function Profile({
         <ProfileNavbar user={user} setSignedIn={setSignedIn} />
         <Banner user={user} setUser={setUser} />
         <Profile_Pic user={user} setUser={setUser} />
+        <div className="center">
+        <div className="grid">
+          {user.items.map((item) => {
+            return (
+              <Card bg={"black"} key={item.id} style={{ width: "18rem" }} className = 'grid-item'>
+                <Card.Img variant="top" src={item.picture} className = 'card-img'/>
+                <Card.Body>
+                  <Card.Title className = 'card-title'>{item.name}</Card.Title>
+                  {/* <Card.Text className = 'card-price'>${item.price}</Card.Text>
+                  <Button variant="custom">Buy</Button> */}
+                </Card.Body>
+              </Card>
+            );
+          })}
+          </div>
+        </div>
       </div>
     );
   } else if (storeOwner !== null) {
@@ -43,6 +59,7 @@ function Profile({
           setTriggerRender={setTriggerRender}
         />
         <h2 id="pro_store_name"> {storeOwner.name}</h2>
+        <div className="center">
         <div className="grid">
           {storeOwner.items.map((item) => {
             return (
@@ -56,6 +73,7 @@ function Profile({
               </Card>
             );
           })}
+          </div>
         </div>
       </div>
     );
