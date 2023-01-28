@@ -56,8 +56,6 @@ function App() {
             setStoreOwner(data);
             setSignedIn(true);
           }
-          // setStoreOwner(data);
-          // setSignedIn(true);
         });
       }
     });
@@ -74,7 +72,7 @@ function App() {
     });
   }, []);
 
-// Retrievese all the store information for users to view and access the stores
+// Retrieves all the store information for users to view and access the stores
   useEffect(() => {
     getStore();
   }, [triggerRender]);

@@ -1,0 +1,18 @@
+.center{
+display: flex;
+justify-content: center;
+}
+
+.grid-home {
+  display: inline-grid;
+  grid-template-columns: auto auto auto auto auto;
+  justify-content:  center;
+
+}
+
+.home-item {
+  padding: 15px;
+  margin: 20px;
+  text-align: center;
+  font-family: "Silkscreen", cursive;
+}

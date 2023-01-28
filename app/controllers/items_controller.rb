@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   def index 
-    render json: Item.all
+    render json: Item.all.shuffle[0..4]
   end
 
   def show 

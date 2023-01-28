@@ -61,46 +61,6 @@ function Profile({
     );
   }
   }
-  // if 
-  //   (user === null && storeOwner === null) 
-  //  {
-  //   return "Loading...";
-  // } else if (user !== null) {
-  //   return (
-  //     <div>
-  //       <ProfileNavbar user={user} setSignedIn={setSignedIn} />
-  //       <Banner user={user} setUser={setUser} />
-  //       <Profile_Pic user={user} setUser={setUser} />
-  //     </div>
-  //   );
-  // } else if (storeOwner !== null) {
-  //   return (
-  //     <div>
-  //       <ProfileNavbar storeOwner={storeOwner} setSignedIn={setSignedIn} />
-  //       <StoreBanner
-  //         storeOwner={storeOwner}
-  //         setStoreOwner={setStoreOwner}
-  //         triggerRender={triggerRender}
-  //         setTriggerRender={setTriggerRender}
-  //       />
-  //       <h2 id="pro_store_name"> {storeOwner.name}</h2>
-  //       <div className="grid">
-  //         {storeOwner.items.map((item) => {
-  //           return (
-  //             <Card bg={"black"} key={item.id} style={{ width: "18rem" }} className = 'grid-item'>
-  //               <Card.Img variant="top" src={item.picture} className = 'card-img'/>
-  //               <Card.Body>
-  //                 <Card.Title className = 'card-title'>{item.name}</Card.Title>
-  //                 <Card.Text className = 'card-price'>${item.price}</Card.Text>
-  //                 <Button variant="custom">Buy</Button>
-  //               </Card.Body>
-  //             </Card>
-  //           );
-  //         })}
-  //       </div>
-  //     </div>
-  //   );
-  // }
 }
 
 export default Profile;
