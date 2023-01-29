@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   def index 
-    render json: Item.all.shuffle[0..4]
+    render json: Item.all.shuffle[0..4], include: :store
   end
 
   def show 

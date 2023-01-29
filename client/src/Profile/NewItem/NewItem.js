@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Navigate, Link } from "react-router-dom";
 import Typed from "react-typed";
 
-function NewItem({ storeOwner }) {
+function NewItem({ storeOwner, setTriggerRender, triggerRender }) {
   const [itemCreated, setItemCreatedItem] = useState(false);
   const [itemName, setItemName] = useState("");
   const [itemPrice, setItemPrice] = useState(0);
@@ -40,6 +40,7 @@ function NewItem({ storeOwner }) {
         response.json().then((data) => {
           console.log(data);
           setItemCreatedItem(true);
+          setTriggerRender(!triggerRender);
         });
       }
     });

@@ -23,6 +23,7 @@ function App() {
   const [chosenStore, setChosenStore] = useState({ name: "" });
   const [viewingStore, setStoreView] = useState(false);
   const [triggerRender, setTriggerRender] = useState(false);
+  const [newItem, setnewItem] = useState(null);
   function getStore() {
     fetch("/stores").then((response) => {
       if (response.ok) {
@@ -32,12 +33,12 @@ function App() {
       }
     });
   }
-  // Retrieves the logged in user 
+  // Retrieves the logged in user
   useEffect(() => {
     fetch("/me").then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          console.log(data)
+          console.log(data);
           setUser(data);
           setSignedIn(true);
         });
@@ -45,22 +46,22 @@ function App() {
     });
   }, []);
 
-// Retrieve the logged in store runner
+  // Retrieve the logged in store runner
   useEffect(() => {
     fetch("/storeme").then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          if(data.error){
-            console.log(data)
-          }else{
+          if (data.error) {
+            console.log(data);
+          } else {
             setStoreOwner(data);
             setSignedIn(true);
           }
         });
       }
     });
-  }, []);
-// Retrieves the items that can be viewed on the home page
+  }, [triggerRender]);
+  // Retrieves the items that can be viewed on the home page
   useEffect(() => {
     fetch("/items").then((response) => {
       if (response.ok) {
@@ -72,7 +73,7 @@ function App() {
     });
   }, []);
 
-// Retrieves all the store information for users to view and access the stores
+  // Retrieves all the store information for users to view and access the stores
   useEffect(() => {
     getStore();
   }, [triggerRender]);
@@ -80,6 +81,10 @@ function App() {
   function newStore(store) {
     holdStores([...allStores, store]);
   }
+
+  // function neItems(newItem){
+  //   storeOwner.items()
+  // }
 
   return (
     <div>
@@ -164,7 +169,16 @@ function App() {
             />
           }
         />
-        <Route path="/newitem" element={<NewItem storeOwner={storeOwner} />} />
+        <Route
+          path="/newitem"
+          element={
+            <NewItem
+              storeOwner={storeOwner}
+              setTriggerRender={setTriggerRender}
+              triggerRender={triggerRender}
+            />
+          }
+        />
         <Route
           path="/"
           element={
