@@ -66,7 +66,6 @@ function App() {
     fetch("/items").then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          // console.log(data);
           setItem(data);
         });
       }
@@ -81,10 +80,6 @@ function App() {
   function newStore(store) {
     holdStores([...allStores, store]);
   }
-
-  // function neItems(newItem){
-  //   storeOwner.items()
-  // }
 
   return (
     <div>
@@ -166,6 +161,7 @@ function App() {
               setChosenStore={setChosenStore}
               setStoreView={setStoreView}
               viewingStore={viewingStore}
+              user ={user}
             />
           }
         />

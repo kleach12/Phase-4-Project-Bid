@@ -20,7 +20,7 @@ function Home({
   setStoreOwner,
   items,
 }) {
-  console.log(items)
+  console.log(items);
   if (items) {
     if (signedIn) {
       return (
@@ -61,10 +61,8 @@ function Home({
                         {item.name}
                       </Card.Title>
                       <Card.Text className="card-price">
-                        ${item.price}
-                        ${item.store.name}
+                        {item.store.name}
                       </Card.Text>
-                      {/* <Button variant="custom">Buy</Button> */}
                     </Card.Body>
                   </Card>
                 );
@@ -104,13 +102,10 @@ function Home({
                       <Card.Title className="card-title">
                         {item.name}
                       </Card.Title>
+
                       <Card.Text className="card-price">
-                        ${item.price}
+                        {item.store.name}
                       </Card.Text>
-                      <Card.Text className="card-price">
-                      {item.store.name}
-                      </Card.Text>
-                      {/* <Button variant="custom">Buy</Button> */}
                     </Card.Body>
                   </Card>
                 );
