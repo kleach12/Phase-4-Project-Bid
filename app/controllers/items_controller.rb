@@ -1,13 +1,13 @@
 class ItemsController < ApplicationController
 
   def index 
-    render json: Item.all.shuffle[0..4], include: :store
+    render json: Item.all.uniq(&:name).shuffle[0..4], include: :store
   end
 
   def show 
     item = find_item
     if item
-      render json: item
+      render json: item.uniq(&:name)
     else
       render json: {error: "Item not found"}, status: :not_found
     end
@@ -42,7 +42,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.permit(:name, :price, :user_id, :picture, :store_id)
+    params.permit(:name, :price, :user_id, :picture, :store_id, :id)
   end
 
   def render_not_found_response

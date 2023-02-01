@@ -27,7 +27,7 @@ function NewItem({ storeOwner, setTriggerRender, triggerRender }) {
       picture: itemPicture,
       price: itemPrice,
       store_id: storeOwner.id,
-      user_id: 1,
+      user_id: null,
     };
     fetch("/items", {
       method: "POST",
