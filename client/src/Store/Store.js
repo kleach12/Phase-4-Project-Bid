@@ -15,7 +15,6 @@ function Store({
   storeOwner,
 }) {
   const store = JSON.parse(localStorage.getItem("store"));
-  // const [storeItems, setStoreItmes] = useState(null)
   const [filteredItems, setFilterdItems] = useState(null);
   if (filteredItems === null) {
     setFilterdItems(
@@ -25,13 +24,6 @@ function Store({
       )
     );
   }
-  // const filteredStore = storeItems.filter((obj,index) => storeItems.findIndex((item) => item.name === obj.name) === index)
-
-  // const filteredStore = storeItems.filter((obj,index) => storeItems.findIndex((item) => item.name === obj.name) === index)
-  // const filteredStore = store.filter((item,index) => store.indexOf(item) === index)
-  // console.log(filteredStore)
-  // function boughtItem
-
   function handleBuyItem(item) {
     console.log(item);
     // e.preventDefault();

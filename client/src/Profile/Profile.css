@@ -37,3 +37,7 @@
   margin-bottom: 5px;
   color: #613dc1;
 }
+
+.outer{
+  position: relative;
+}

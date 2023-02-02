@@ -2,16 +2,16 @@
   border-radius: 50%;
   width: 170px;
   height: 170px;
-  top: 225px;
-  left: 10px;
+  top: 9%;
+  left: 100px;
   position: absolute;
 }
 
 #profile_pic img{
   border-radius: 50%;
-  width: 170px;
-  height: 170px;
-  top: 225px;
+  width: 190px;
+  height: 190px;
+  /* top: 50%; */
   left: 10px;
 }
 

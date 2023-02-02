@@ -65,23 +65,5 @@ function LoggedInNav({
     );
   }
 }
-//   return (
-//     <nav id="loggedInNav">
-//       <div className="navleft">
-//         <h1>Bid</h1>
-//       </div>
-//       <div className="navcenter"></div>
-//       <div className="navright">
-//         <Link to="/profile" style={{ textDecoration: "none" }}>
-//           <button id="profile"> Profile </button>
-//         </Link>
-//         <button id="signout" onClick={handleSignOut}>
-//           {" "}
-//           Sign out{" "}
-//         </button>
-//       </div>
-//     </nav>
-//   );
-// }
 
 export default LoggedInNav;

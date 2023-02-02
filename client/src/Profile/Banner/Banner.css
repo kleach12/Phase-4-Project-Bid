@@ -2,17 +2,18 @@
   font-family: "Silkscreen", cursive;
   background: black;
   overflow: hidden; 
+  position: relative;
 }
 
 #banner_current {
   width: 100%;
-  height: 25vh;
+  /* height: 100px; */
   position: relative;
 }
 
 #profile_banner img {
   width: 100%;
-  height: 25vh;
+  height: 225px;
 }
 
 #banner_edit {
