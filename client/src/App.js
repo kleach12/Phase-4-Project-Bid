@@ -23,7 +23,7 @@ function App() {
   const [chosenStore, setChosenStore] = useState({ name: "" });
   const [viewingStore, setStoreView] = useState(false);
   const [triggerRender, setTriggerRender] = useState(false);
-  const [newItem, setnewItem] = useState(null);
+  // const [newItem, setnewItem] = useState(null);
   function getStore() {
     fetch("/stores").then((response) => {
       if (response.ok) {

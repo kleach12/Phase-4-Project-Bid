@@ -4,14 +4,15 @@ import Typed from "react-typed";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
-function StoreSignUp({ setStoreOwner, signedIn, newStore }) {
+function StoreSignUp({ setStoreOwner, signedIn, newStore,setSignedIn }) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [passconfirm, setPassConfirm] = useState("");
   const [picture, setPicture] = useState("");
 
   function handleUsername(e) {
-    setName(e.target.value);
+    setName(e.target.value.toUpperCase());
+    console.log(name)
   }
 
   function handlePassword(e) {
@@ -43,9 +44,12 @@ function StoreSignUp({ setStoreOwner, signedIn, newStore }) {
     }).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          console.log(data);
-          setStoreOwner(data)
-          newStore(data);
+          console.log(data)
+          if(data.id){
+            setStoreOwner(data)
+            newStore(data);
+            setSignedIn(true)
+          }
         });
       }
     });

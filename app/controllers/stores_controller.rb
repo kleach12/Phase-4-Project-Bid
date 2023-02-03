@@ -1,4 +1,5 @@
 class StoresController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
   def index
     render json: Store.all , include: :items
@@ -15,7 +16,7 @@ class StoresController < ApplicationController
 
   def create
     store = Store.create(store_params)
-    if store 
+    if store.valid?
       render json: store, status: :created
     else
       render json: {errors: store.errors.full_messages}, status: :unprocessable_entity
@@ -46,5 +47,9 @@ class StoresController < ApplicationController
   def find_store
     Store.find(params[:id])
   end 
+
+  def render_not_found_response
+    render json: { error: "Bid not found" }, status: :not_found
+  end
 
 end

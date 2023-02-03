@@ -30,9 +30,11 @@ function StoreSignIn({ setStoreOwner, signedIn, setSignedIn }) {
     }).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          console.log(data)
-          setSignedIn(true);
-          setStoreOwner(data);
+          if(data.id){
+            console.log(data)
+            setSignedIn(true);
+            setStoreOwner(data);
+          }
         });
       }
     });
