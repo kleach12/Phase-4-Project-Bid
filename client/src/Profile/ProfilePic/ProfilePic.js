@@ -5,15 +5,17 @@ import { useState } from "react";
 function Profile_Pic({ user, setUser }) {
   const [editMode, setEditMode] = useState(false);
   const [newPic, setNewPic] = useState(null);
-  const userPic = user.pic ? user.profile_pic : 'https://thumbs.dreamstime.com/b/profile-placeholder-image-gray-silhouette-no-photo-person-avatar-default-pic-used-web-design-127393540.jpg'
+  const userPic = user.pic
+    ? user.profile_pic
+    : "https://thumbs.dreamstime.com/b/profile-placeholder-image-gray-silhouette-no-photo-person-avatar-default-pic-used-web-design-127393540.jpg";
 
   function editPic() {
     setEditMode(!editMode);
     console.log(editMode);
   }
 
-  function handleNewProPic(e){
-    setNewPic(e.target.value)
+  function handleNewProPic(e) {
+    setNewPic(e.target.value);
   }
 
   function handleProfilePicUpdate(e) {
@@ -36,29 +38,34 @@ function Profile_Pic({ user, setUser }) {
         setEditMode(false);
       });
   }
-
-  if (editMode) {
-    return (
-      <div>
-        <div id="profile_pic" onClick={editPic}>
-          <img id="user_pic" src={userPic} />
+  if (user) {
+    if (editMode) {
+      return (
+        <div>
+          <div id="profile_pic" onClick={editPic}>
+            <img id="user_pic" src={userPic} />
+          </div>
+          <form id="profile_edit_input">
+            <h2> New Profile Picture</h2>
+            <input
+              id="newPicInput"
+              type="textbox"
+              onChange={handleNewProPic}
+            ></input>
+            <button id="newPicSubmit" onClick={handleProfilePicUpdate}>
+              {" "}
+              New Pic{" "}
+            </button>
+          </form>
         </div>
-        <form id="profile_edit_input">
-          <h2> New Profile Picture</h2>
-          <input id="newPicInput" type="textbox" onChange={handleNewProPic}></input>
-          <button id="newPicSubmit" onClick={handleProfilePicUpdate}>
-            {" "}
-            New Pic{" "}
-          </button>
-        </form>
+      );
+    }
+    return (
+      <div id="profile_pic" onClick={editPic}>
+        <img src={userPic} alt="Profile_Pic" />
       </div>
     );
   }
-  return (
-    <div id="profile_pic" onClick={editPic}>
-      <img src={userPic} alt = "Profile_Pic"/>
-    </div>
-  );
 }
 
 export default Profile_Pic;

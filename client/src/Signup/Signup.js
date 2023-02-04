@@ -37,6 +37,7 @@ function Signup({ setSignedIn, signedIn, setUser }) {
     }).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
+          console.log(data)
           setSignedIn(true);
           setUser(data);
         });
