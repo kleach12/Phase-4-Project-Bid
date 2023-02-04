@@ -5,6 +5,7 @@ import { useState } from "react";
 function Profile_Pic({ user, setUser }) {
   const [editMode, setEditMode] = useState(false);
   const [newPic, setNewPic] = useState(null);
+  const userPic = user.pic ? user.profile_pic : 'https://thumbs.dreamstime.com/b/profile-placeholder-image-gray-silhouette-no-photo-person-avatar-default-pic-used-web-design-127393540.jpg'
 
   function editPic() {
     setEditMode(!editMode);
@@ -40,7 +41,7 @@ function Profile_Pic({ user, setUser }) {
     return (
       <div>
         <div id="profile_pic" onClick={editPic}>
-          <img id="user_pic" src={user.profile_pic} />
+          <img id="user_pic" src={userPic} />
         </div>
         <form id="profile_edit_input">
           <h2> New Profile Picture</h2>
@@ -55,7 +56,7 @@ function Profile_Pic({ user, setUser }) {
   }
   return (
     <div id="profile_pic" onClick={editPic}>
-      <img src={user.profile_pic} />
+      <img src={userPic} alt = "Profile_Pic"/>
     </div>
   );
 }
