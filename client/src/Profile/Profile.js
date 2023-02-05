@@ -15,21 +15,23 @@ function Profile({
   setStoreOwner,
   triggerRender,
   setTriggerRender,
+  filteredItems,
+  setFilterdItems
 }) {
-  // fix the issue with refreshing and losing data also add a function that will allow user to edit there banner image. also add profile picture feat
-  // The issue was my code was throwing errors because it was trying to mount the component without data. A simple if else statement waiting for the data fixes this.
-  // console.log(storeOwner );
-  // const [newItemm, setNewItem] = useState(null)
-  const [filteredItems, setFilterdItems] = useState(null);
+  // const [filteredItems, setFilterdItems] = useState(null);
 
-  if (filteredItems === null && storeOwner) {
-    setFilterdItems(
-      storeOwner.items.filter(
-        (obj, index) =>
-          storeOwner.items.findIndex((item) => item.name === obj.name) === index
-      )
-    );
-  }
+  // function newItem(item) {
+  //   setFilterdItems([...filteredItems, item]);
+  // }
+
+  // if (filteredItems === null && storeOwner) {
+  //   setFilterdItems(
+  //     storeOwner.items.filter(
+  //       (obj, index) =>
+  //         storeOwner.items.findIndex((item) => item.name === obj.name) === index
+  //     )
+  //   );
+  // }
 
   if (storeOwner || user) {
     if (user === null && storeOwner === null) {
@@ -61,8 +63,6 @@ function Profile({
                       <Card.Title className="card-title">
                         {item.name}
                       </Card.Title>
-                      {/* <Card.Text className = 'card-price'>${item.price}</Card.Text>
-                  <Button variant="custom">Buy</Button> */}
                     </Card.Body>
                   </Card>
                 );

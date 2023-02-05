@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Navigate, Link } from "react-router-dom";
 import Typed from "react-typed";
 
-function NewItem({ storeOwner, setTriggerRender, triggerRender }) {
+function NewItem({ storeOwner, setTriggerRender, triggerRender, newItem }) {
   const [itemCreated, setItemCreatedItem] = useState(false);
   const [itemName, setItemName] = useState("");
   const [itemPrice, setItemPrice] = useState(0);
@@ -39,11 +39,14 @@ function NewItem({ storeOwner, setTriggerRender, triggerRender }) {
       if (response.ok) {
         response.json().then((data) => {
           setTriggerRender(!triggerRender)
-          setItemCreatedItem(true)
+          newItem(data)
+          // setItemCreatedItem(true)
         })
       }
     });
+    setItemCreatedItem(true)
   }
+  
   if (itemCreated) {
     return <Navigate to={"/profile"} />;
   }

@@ -23,6 +23,7 @@ function App() {
   const [chosenStore, setChosenStore] = useState({ name: "" });
   const [viewingStore, setStoreView] = useState(false);
   const [triggerRender, setTriggerRender] = useState(false);
+  const [filteredItems, setFilterdItems] = useState(null);
 
   function getStore() {
     fetch("/stores").then((response) => {
@@ -79,6 +80,19 @@ function App() {
 
   function newStore(store) {
     holdStores([...allStores, store]);
+  }
+
+  function newItem(item) {
+    setFilterdItems([...filteredItems, item]);
+  }
+
+  if (filteredItems === null && storeOwner) {
+    setFilterdItems(
+      storeOwner.items.filter(
+        (obj, index) =>
+          storeOwner.items.findIndex((item) => item.name === obj.name) === index
+      )
+    );
   }
 
   return (
@@ -138,6 +152,8 @@ function App() {
               setStoreOwner={setStoreOwner}
               triggerRender={triggerRender}
               setTriggerRender={setTriggerRender}
+              filteredItems = {filteredItems}
+              setFilterdItems={setFilterdItems}
             />
           }
         />
@@ -174,6 +190,7 @@ function App() {
               storeOwner={storeOwner}
               setTriggerRender={setTriggerRender}
               triggerRender={triggerRender}
+              newItem={newItem}
             />
           }
         />
