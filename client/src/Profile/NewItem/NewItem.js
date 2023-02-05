@@ -40,7 +40,6 @@ function NewItem({ storeOwner, setTriggerRender, triggerRender, newItem }) {
         response.json().then((data) => {
           setTriggerRender(!triggerRender)
           newItem(data)
-          // setItemCreatedItem(true)
         })
       }
     });

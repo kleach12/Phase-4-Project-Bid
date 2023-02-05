@@ -36,7 +36,7 @@ class StoresController < ApplicationController
   def update 
     store = Store.find(params[:id])
     store.update(store_params )
-    render json: store
+    render json: store, include: :items
   end
 
   private 

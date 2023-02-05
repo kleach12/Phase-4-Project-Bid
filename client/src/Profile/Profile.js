@@ -16,22 +16,7 @@ function Profile({
   triggerRender,
   setTriggerRender,
   filteredItems,
-  setFilterdItems
 }) {
-  // const [filteredItems, setFilterdItems] = useState(null);
-
-  // function newItem(item) {
-  //   setFilterdItems([...filteredItems, item]);
-  // }
-
-  // if (filteredItems === null && storeOwner) {
-  //   setFilterdItems(
-  //     storeOwner.items.filter(
-  //       (obj, index) =>
-  //         storeOwner.items.findIndex((item) => item.name === obj.name) === index
-  //     )
-  //   );
-  // }
 
   if (storeOwner || user) {
     if (user === null && storeOwner === null) {

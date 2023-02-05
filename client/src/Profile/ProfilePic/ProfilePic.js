@@ -5,7 +5,7 @@ import { useState } from "react";
 function Profile_Pic({ user, setUser }) {
   const [editMode, setEditMode] = useState(false);
   const [newPic, setNewPic] = useState(null);
-  const userPic = user.pic
+  const userPic = user.profile_pic
     ? user.profile_pic
     : "https://thumbs.dreamstime.com/b/profile-placeholder-image-gray-silhouette-no-photo-person-avatar-default-pic-used-web-design-127393540.jpg";
 
