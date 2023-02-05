@@ -11,9 +11,6 @@ function ProfileNavbar({ storeOwner }) {
         </div>
         <div className="navcenter"></div>
         <div className="navright">
-          {/* <Link to="/" style={{ textDecoration: "none" }}>
-            <button id="new_item"> Add Item </button>
-          </Link> */}
           <Link to="/" style={{ textDecoration: "none" }}>
             <button id="home"> Home </button>
           </Link>
@@ -33,9 +30,6 @@ function ProfileNavbar({ storeOwner }) {
       <div className="navright">
         <Link to="/" style={{ textDecoration: "none" }}>
           <button id="home"> Home </button>
-        </Link>
-        <Link to="/delete" style={{ textDecoration: "none" }}>
-          <button id="signout"> Delete </button>
         </Link>
         <Link to="/newitem" style={{ textDecoration: "none" }}>
           <button id="new_item"> Add Item </button>

@@ -1,13 +1,12 @@
-.center{
-display: flex;
-justify-content: center;
+.center {
+  display: flex;
+  justify-content: center;
 }
 
 .grid-home {
   display: inline-grid;
   grid-template-columns: auto auto auto auto auto;
-  justify-content:  center;
-
+  justify-content: center;
 }
 
 .home-item {
@@ -15,4 +14,12 @@ justify-content: center;
   margin: 20px;
   text-align: center;
   font-family: "Silkscreen", cursive;
+}
+
+.card-title{
+  font-size: 50px;
+}
+
+.card-item{
+  color:white
 }

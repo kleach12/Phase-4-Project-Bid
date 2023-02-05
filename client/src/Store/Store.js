@@ -13,6 +13,8 @@ function Store({
   viewingStore,
   user,
   storeOwner,
+  setTriggerRender,
+  triggerRender
 }) {
   const store = JSON.parse(localStorage.getItem("store"));
   const [filteredItems, setFilterdItems] = useState(null);
@@ -43,6 +45,7 @@ function Store({
     }).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
+          setTriggerRender(!triggerRender)
           console.log(data);
         });
       }

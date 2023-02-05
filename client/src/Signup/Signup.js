@@ -24,7 +24,7 @@ function Signup({ setSignedIn, signedIn, setUser }) {
   function handleSubmit(e) {
     e.preventDefault();
     const formData = {
-      username: username,
+      username: username.toUpperCase(),
       password: password,
       password_confirmation: passconfirm,
     };

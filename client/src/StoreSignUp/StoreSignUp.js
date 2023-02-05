@@ -30,7 +30,7 @@ function StoreSignUp({ setStoreOwner, signedIn, newStore,setSignedIn }) {
   function handleSubmit(e) {
     e.preventDefault();
     const formData = {
-      name: name,
+      name: name.toUpperCase(),
       picture: picture,
       password: password,
       password_confirmation: passconfirm,

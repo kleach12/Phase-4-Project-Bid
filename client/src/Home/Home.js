@@ -58,11 +58,9 @@ function Home({
                     />
                     <Card.Body>
                       <Card.Title className="card-title">
-                        {item.name}
-                      </Card.Title>
-                      <Card.Text className="card-price">
                         {item.store.name}
-                      </Card.Text>
+                      </Card.Title>
+                      <Card.Text className="card-item">{item.name}</Card.Text>
                     </Card.Body>
                   </Card>
                 );
@@ -100,12 +98,10 @@ function Home({
                     />
                     <Card.Body>
                       <Card.Title className="card-title">
-                        {item.name}
+                        {item.store.name}
                       </Card.Title>
 
-                      <Card.Text className="card-price">
-                        {item.store.name}
-                      </Card.Text>
+                      <Card.Text className="card-item">{item.name}</Card.Text>
                     </Card.Body>
                   </Card>
                 );

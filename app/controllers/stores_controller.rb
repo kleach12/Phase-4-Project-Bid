@@ -17,7 +17,8 @@ class StoresController < ApplicationController
   def create
     store = Store.create(store_params)
     if store.valid?
-      render json: store, status: :created
+      session[:store_id] = store.id 
+      render json: store, status: :created, include: :items
     else
       render json: {errors: store.errors.full_messages}, status: :unprocessable_entity
     end

@@ -23,7 +23,7 @@ function App() {
   const [chosenStore, setChosenStore] = useState({ name: "" });
   const [viewingStore, setStoreView] = useState(false);
   const [triggerRender, setTriggerRender] = useState(false);
-  // const [newItem, setnewItem] = useState(null);
+
   function getStore() {
     fetch("/stores").then((response) => {
       if (response.ok) {
@@ -44,7 +44,7 @@ function App() {
         });
       }
     });
-  }, []);
+  }, [triggerRender]);
 
   // Retrieve the logged in store runner
   useEffect(() => {
@@ -161,7 +161,9 @@ function App() {
               setChosenStore={setChosenStore}
               setStoreView={setStoreView}
               viewingStore={viewingStore}
-              user ={user}
+              user={user}
+              setTriggerRender={setTriggerRender}
+              triggerRender={triggerRender}
             />
           }
         />

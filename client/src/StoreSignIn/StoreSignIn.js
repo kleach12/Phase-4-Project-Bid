@@ -18,7 +18,7 @@ function StoreSignIn({ setStoreOwner, signedIn, setSignedIn }) {
   function handleSubmit(e) {
     e.preventDefault();
     const formData = {
-      name: name,
+      name: name.toUpperCase(),
       password: password,
     };
     fetch("/currstore", {

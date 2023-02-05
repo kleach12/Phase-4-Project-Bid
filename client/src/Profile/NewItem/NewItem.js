@@ -38,10 +38,9 @@ function NewItem({ storeOwner, setTriggerRender, triggerRender }) {
     }).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          console.log(data);
-          setItemCreatedItem(true);
-          setTriggerRender(!triggerRender);
-        });
+          setTriggerRender(!triggerRender)
+          setItemCreatedItem(true)
+        })
       }
     });
   }
@@ -62,7 +61,6 @@ function NewItem({ storeOwner, setTriggerRender, triggerRender }) {
             backSpeed={40}
             className="welcome"
           />
-
           <Typed
             strings={["Enter Item Name"]}
             typeSpeed={40}

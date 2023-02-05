@@ -27,15 +27,15 @@
 }
 
 .card-title {
-  font-size: 30px;
+  font-size: 25px;
   margin: 0px;
   color: #613dc1;
 }
 
 .card-price {
-  font-size: 25px;
+  font-size: 20px;
   margin-bottom: 5px;
-  color: #613dc1;
+  color: white;
 }
 
 .outer{
