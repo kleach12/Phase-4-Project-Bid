@@ -6,8 +6,17 @@ A full stack web application built on a React frontend and Rails backend. This i
 
 
 <h2>Installation</h2>
-After cloning the repo run bundle install to download all gems. Then cd into the client and run npm install to download all dependencies for React. Once you have completed that you can run rails db:seed to seed data if you like or you can go ahead and create each User and Store Owner yourself. To start the project you can use  foreman start -f Procfile.dev.
- 
+Step 1: run bundle install to install all rails gems
+Step 2: cd into the client and run npm install for all dependencies 
+Step 3: cd .. out of client folder and run foreman start -f Procfile.dev
+Step 4: If there are no store or user you can run rails db:seed to use seed data or you can create your own stores and users
+Step 5: Have fun!
+
+Notes on installation
+- If you accidentally start a server before bundle installing and running npm you might have to kill the current port
+  - run lsof -wni tcp:3000 to find the current PID
+  - then run  kill -9 PID
+  - run foreman start -f Procfile.dev and you should be good to go!
  
 <h2>Visuals</h2>
 <img src = "https://media4.giphy.com/media/a9Ij6TmYi6e5nuqMtH/giphy.gif"/>
@@ -15,15 +24,12 @@ After cloning the repo run bundle install to download all gems. Then cd into the
 <img src ="https://media3.giphy.com/media/obix7DOmoakRJXS7bJ/giphy.gif"/>
 <img src ="https://media0.giphy.com/media/GazMw11mA5b6nDR8oN/giphy.gif"/>
 
-
-<h2>Roadmap</h2>
-
 <h2>Authors and acknowledgment</h2>
 Kale Leach
 
 
 <h2>Project status</h2>
-This project hase been completed but is still being maintained by myself as I am constantly updating it with new things I learn.
+This project has been completed but is still being maintained by myself as I am constantly updating it with new things I learn.
 
 <h2>Colors</h2>
   
