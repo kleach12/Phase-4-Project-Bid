@@ -8,23 +8,36 @@ function Signup({ setSignedIn, signedIn, setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passconfirm, setPassConfirm] = useState("");
+  const [error, setError] = useState(null);
+
+  const errorMessage = (
+    <Typed
+      strings={[error]}
+      typeSpeed={40}
+      backSpeed={40}
+      className="error_msg"
+    />
+  );
 
   function handleUsername(e) {
-    setUsername(e.target.value);
+    setUsername(e.target.value.toUpperCase());
+    setError(null)
   }
 
   function handlePassword(e) {
     setPassword(e.target.value);
+    setError(null)
   }
 
   function handlePasswordConfirm(e) {
     setPassConfirm(e.target.value);
+    setError(null)
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     const formData = {
-      username: username.toUpperCase(),
+      username: username,
       password: password,
       password_confirmation: passconfirm,
     };
@@ -34,16 +47,19 @@ function Signup({ setSignedIn, signedIn, setUser }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
-    }).then((response) => {
-      if (response.ok) {
-        response.json().then((data) => {
+    }).then((r) => r.json())
+      .then((data) => {
+        if (data.errors){
+          console.log(data.errors)
+          setError(data.errors[0])
+        }else{
           console.log(data)
           setSignedIn(true);
           setUser(data);
+        }
         });
       }
-    });
-  }
+
   if (signedIn) {
     return <Navigate to={"/"} />;
   }
@@ -52,7 +68,7 @@ function Signup({ setSignedIn, signedIn, setUser }) {
       <Link to="/">
         <button className="exit"> Exit</button>
       </Link>
-      <form id="login">
+      <form id="signupform">
         <div className="exit"></div>
         <div className="container">
           <Typed
@@ -90,8 +106,10 @@ function Signup({ setSignedIn, signedIn, setUser }) {
               type="password"
             />
           </Typed>
-          <button onClick={handleSubmit}> Create Account</button>
+          {/* <button onClick={handleSubmit}> Create Account</button> */}
         </div>
+        <button onClick={handleSubmit}> Create Account</button>
+        <h2>{error ? errorMessage : null}</h2>
       </form>
     </div>
   );

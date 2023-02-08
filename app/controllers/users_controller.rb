@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   end
 
   def render_not_found_response
-    render json: { error: "Bid not found" }, status: :not_found
+    render json: { error: "User not found" }, status: :not_found
   end
 
 end

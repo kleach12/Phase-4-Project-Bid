@@ -14,10 +14,10 @@ import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function App() {
+  const [signedIn, setSignedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [storeOwner, setStoreOwner] = useState(null);
   const [items, setItem] = useState(null);
-  const [signedIn, setSignedIn] = useState(false);
   const [allStores, holdStores] = useState(null);
   const [currentStore, setCurrentStore] = useState(null);
   const [chosenStore, setChosenStore] = useState({ name: "" });
@@ -34,16 +34,32 @@ function App() {
       }
     });
   }
+  
   // Retrieves the logged in user
   useEffect(() => {
     fetch("/me").then((response) => {
-      if (response.ok) {
-        response.json().then((data) => {
-          console.log(data);
-          setUser(data);
-          setSignedIn(true);
-        });
+      if (!response.ok) {
+        throw Error('There is no user signed in at this time')
+        console.log(response)
+        // response.json().then((data) => {
+        //   if (data) {
+        //     console.log('data');
+        //   } else {
+        //     console.log(data);
+        //     setUser(data);
+        //     setSignedIn(true);
+        //   }
+        // });
       }
+      return response.json().then((data) => {
+          if (data.error) {
+            console.log('data');
+          } else {
+            console.log(data);
+            setUser(data);
+            setSignedIn(true);
+          }
+        });
     });
   }, [triggerRender]);
 
@@ -53,7 +69,7 @@ function App() {
       if (response.ok) {
         response.json().then((data) => {
           if (data.error) {
-            console.log(data);
+            console.log(data.error);
           } else {
             setStoreOwner(data);
             setSignedIn(true);
@@ -152,7 +168,7 @@ function App() {
               setStoreOwner={setStoreOwner}
               triggerRender={triggerRender}
               setTriggerRender={setTriggerRender}
-              filteredItems = {filteredItems}
+              filteredItems={filteredItems}
               setFilterdItems={setFilterdItems}
             />
           }

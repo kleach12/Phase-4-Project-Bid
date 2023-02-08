@@ -20,7 +20,6 @@ function Home({
   setStoreOwner,
   items,
 }) {
-  console.log(items);
   if (items) {
     if (signedIn) {
       return (

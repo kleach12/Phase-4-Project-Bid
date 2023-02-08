@@ -6,9 +6,19 @@ import { useState } from "react";
 function Signin({ setSignedIn, signedIn, setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+
+  const errorMessage = (
+    <Typed
+      strings={["Username or Password does not match"]}
+      typeSpeed={40}
+      backSpeed={40}
+      className="error_msg"
+    />
+  );
 
   function handleUsername(e) {
-    setUsername(e.target.value);
+    setUsername(e.target.value.toUpperCase());
   }
 
   function handlePassword(e) {
@@ -27,14 +37,20 @@ function Signin({ setSignedIn, signedIn, setUser }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
-    }).then((response) => {
-      if (response.ok) {
-        response.json().then((data) => {
-          setSignedIn(true);
-          setUser(data);
-        });
-      }
-    });
+    })
+      .then((response) => {
+        if (!response.ok) {
+          console.log(response);
+          setError(true);
+        } else {
+          response.json().then((data) => {
+            setSignedIn(true);
+            setUser(data);
+            setError(false);
+          });
+        }
+      })
+      .catch((err) => console.log(err.message));
   }
   if (signedIn) {
     return <Navigate to={"/"} />;
@@ -76,6 +92,7 @@ function Signin({ setSignedIn, signedIn, setUser }) {
             <input type="password" onChange={handlePassword} />
           </Typed>
           <button onClick={handleSubmit}> Sign in</button>
+          <h2>{error ? errorMessage : null}</h2>
         </div>
       </div>
     </div>

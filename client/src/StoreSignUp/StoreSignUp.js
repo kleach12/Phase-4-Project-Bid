@@ -4,27 +4,40 @@ import Typed from "react-typed";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
-function StoreSignUp({ setStoreOwner, signedIn, newStore,setSignedIn }) {
+function StoreSignUp({ setStoreOwner, signedIn, newStore, setSignedIn }) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [passconfirm, setPassConfirm] = useState("");
   const [picture, setPicture] = useState("");
+  const [error, setError] = useState(null);
+
+  const errorMessage = (
+    <Typed
+      strings={[error]}
+      typeSpeed={40}
+      backSpeed={40}
+      className="error_msg"
+    />
+  );
 
   function handleUsername(e) {
     setName(e.target.value.toUpperCase());
-    console.log(name)
+    setError(null);
   }
 
   function handlePassword(e) {
     setPassword(e.target.value);
+    setError(null);
   }
 
   function handlePasswordConfirm(e) {
     setPassConfirm(e.target.value);
+    setError(null);
   }
 
   function handlePicture(e) {
     setPicture(e.target.value);
+    setError(null);
   }
 
   function handleSubmit(e) {
@@ -41,18 +54,18 @@ function StoreSignUp({ setStoreOwner, signedIn, newStore,setSignedIn }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
-    }).then((response) => {
-      if (response.ok) {
-        response.json().then((data) => {
-          console.log(data)
-          if(data.id){
-            setStoreOwner(data)
-            newStore(data);
-            setSignedIn(true)
-          }
-        });
-      }
-    });
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.errors) {
+          console.log(data.errors);
+          setError(data.errors[0]);
+        } else {
+          console.log(data);
+          setSignedIn(true);
+          setStoreOwner(data);
+        }
+      });
   }
   if (signedIn) {
     return <Navigate to={"/"} />;
@@ -62,7 +75,7 @@ function StoreSignUp({ setStoreOwner, signedIn, newStore,setSignedIn }) {
       <Link to="/">
         <button className="exit"> Exit</button>
       </Link>
-      <form id="login">
+      <form id="store_signup">
         <div className="exit"></div>
         <div className="container">
           <Typed
@@ -108,8 +121,9 @@ function StoreSignUp({ setStoreOwner, signedIn, newStore,setSignedIn }) {
           >
             <input value={picture} onChange={handlePicture} type="text" />
           </Typed>
-          <button onClick={handleSubmit}> Create Account</button>
         </div>
+        <button onClick={handleSubmit}> Create Account</button>
+        <h2>{error ? errorMessage : null}</h2>
       </form>
     </div>
   );

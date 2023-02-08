@@ -1,4 +1,4 @@
-import "./StoreSignIn.css"
+import "./StoreSignIn.css";
 import Typed from "react-typed";
 import { Link, Navigate } from "react-router-dom";
 import { useState } from "react";
@@ -6,6 +6,16 @@ import { useState } from "react";
 function StoreSignIn({ setStoreOwner, signedIn, setSignedIn }) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+
+  const errorMessage = (
+    <Typed
+      strings={["Username or Password does not match"]}
+      typeSpeed={40}
+      backSpeed={40}
+      className="error_msg"
+    />
+  );
 
   function handleName(e) {
     setName(e.target.value);
@@ -28,16 +38,21 @@ function StoreSignIn({ setStoreOwner, signedIn, setSignedIn }) {
       },
       body: JSON.stringify(formData),
     }).then((response) => {
-      if (response.ok) {
+      if (!response.ok) {
+        console.log(response);
+        setError(true);
+      }else{
         response.json().then((data) => {
-          if(data.id){
-            console.log(data)
+          if (data.id) {
+            console.log(data);
             setSignedIn(true);
             setStoreOwner(data);
+            setError(false);
           }
         });
       }
-    });
+    })
+    .catch((err) => console.log(err.message));
   }
   if (signedIn) {
     return <Navigate to={"/"} />;
@@ -79,6 +94,7 @@ function StoreSignIn({ setStoreOwner, signedIn, setSignedIn }) {
             <input type="password" onChange={handlePassword} />
           </Typed>
           <button onClick={handleSubmit}> Sign in</button>
+          <h2>{error ? errorMessage : null}</h2>
         </div>
       </div>
     </div>
