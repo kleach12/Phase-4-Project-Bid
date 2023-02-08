@@ -10,7 +10,7 @@ function Signin({ setSignedIn, signedIn, setUser }) {
 
   const errorMessage = (
     <Typed
-      strings={["Username or Password does not match"]}
+      strings={[error]}
       typeSpeed={40}
       backSpeed={40}
       className="error_msg"
@@ -19,10 +19,12 @@ function Signin({ setSignedIn, signedIn, setUser }) {
 
   function handleUsername(e) {
     setUsername(e.target.value.toUpperCase());
+    setError(null);
   }
 
   function handlePassword(e) {
     setPassword(e.target.value);
+    setError(null);
   }
 
   function handleSubmit(e) {
@@ -38,16 +40,15 @@ function Signin({ setSignedIn, signedIn, setUser }) {
       },
       body: JSON.stringify(formData),
     })
-      .then((response) => {
-        if (!response.ok) {
-          console.log(response);
-          setError(true);
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.error) {
+          console.log(data.error);
+          setError(data.error);
         } else {
-          response.json().then((data) => {
-            setSignedIn(true);
-            setUser(data);
-            setError(false);
-          });
+          console.log(data);
+          setSignedIn(true);
+          setUser(data);
         }
       })
       .catch((err) => console.log(err.message));
@@ -91,9 +92,9 @@ function Signin({ setSignedIn, signedIn, setUser }) {
           >
             <input type="password" onChange={handlePassword} />
           </Typed>
-          <button onClick={handleSubmit}> Sign in</button>
-          <h2>{error ? errorMessage : null}</h2>
         </div>
+        <button onClick={handleSubmit}> Sign in</button>
+        <h2>{error ? errorMessage : null}</h2>
       </div>
     </div>
   );

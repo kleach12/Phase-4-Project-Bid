@@ -5,7 +5,7 @@ class StoreSessionController < ApplicationController
       session[:store_id] = store.id 
       render json: store, status: :created , include: :items
     else
-      render json: {error: "Store does not exist"}, status: :unauthorized
+      render json: {error: "Invalid username or password"}, status: :unauthorized
     end
   end
 

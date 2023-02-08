@@ -9,6 +9,7 @@
   height: 100vh;
   font-size: 30px;
   overflow-y: hidden;
+  flex-direction: column;
 }
 
 .container{

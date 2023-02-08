@@ -10,7 +10,7 @@ class StoresController < ApplicationController
     if store
       render json: store, include: :items
     else 
-      render json: {error: "This store does not exisit"}, status: :ok
+      render json: {error: "This store does not exisit"}, status: :unauthorized
     end 
   end 
 

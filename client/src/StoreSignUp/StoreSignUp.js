@@ -58,14 +58,12 @@ function StoreSignUp({ setStoreOwner, signedIn, newStore, setSignedIn }) {
       .then((r) => r.json())
       .then((data) => {
         if (data.errors) {
-          console.log(data.errors);
           setError(data.errors[0]);
         } else {
-          console.log(data);
           setSignedIn(true);
           setStoreOwner(data);
         }
-      });
+      }).catch(e => {console.log(e)})
   }
   if (signedIn) {
     return <Navigate to={"/"} />;

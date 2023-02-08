@@ -10,7 +10,7 @@ function StoreSignIn({ setStoreOwner, signedIn, setSignedIn }) {
 
   const errorMessage = (
     <Typed
-      strings={["Username or Password does not match"]}
+      strings={[error]}
       typeSpeed={40}
       backSpeed={40}
       className="error_msg"
@@ -37,19 +37,15 @@ function StoreSignIn({ setStoreOwner, signedIn, setSignedIn }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
-    }).then((response) => {
-      if (!response.ok) {
-        console.log(response);
-        setError(true);
-      }else{
-        response.json().then((data) => {
-          if (data.id) {
-            console.log(data);
-            setSignedIn(true);
-            setStoreOwner(data);
-            setError(false);
-          }
-        });
+    }).then((r) => r.json())
+    .then((data) => {
+      if (data.error) {
+        console.log(data.error);
+        setError(data.error);
+      } else {
+        console.log(data);
+        setSignedIn(true);
+        setStoreOwner(data);
       }
     })
     .catch((err) => console.log(err.message));
@@ -93,9 +89,9 @@ function StoreSignIn({ setStoreOwner, signedIn, setSignedIn }) {
           >
             <input type="password" onChange={handlePassword} />
           </Typed>
-          <button onClick={handleSubmit}> Sign in</button>
-          <h2>{error ? errorMessage : null}</h2>
         </div>
+        <button onClick={handleSubmit}> Sign in</button>
+          <h2>{error ? errorMessage : null}</h2>
       </div>
     </div>
   );
