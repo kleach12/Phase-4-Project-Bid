@@ -1,12 +1,14 @@
-#store_title {
+
+.popup-overlay {
+  background: rgba(0, 0, 0, 0);
+}
+
+
+.popup-content {
+  color: white;
+  background-color: #613dc1;
+  font-size: 20px;
   font-family: "Silkscreen", cursive;
+  padding: 5px;
 }
 
-.card-title {
-  font-size: 50px;
-}
-
-.card-price {
-  font-size: 50px;
-  color: white
-}

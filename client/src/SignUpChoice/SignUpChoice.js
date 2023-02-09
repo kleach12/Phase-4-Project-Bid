@@ -14,8 +14,8 @@ function SignUpChoice() {
         <div className="container">
           <Typed
             strings={[
-              "Welcome back!",
-              "Are you a Buyer or Supplier",
+              "Welcome to Bid!",
+              "Are you a Buyer or Supplier?",
             ]}
             typeSpeed={40}
             backSpeed={40}

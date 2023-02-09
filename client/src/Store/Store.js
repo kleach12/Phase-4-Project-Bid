@@ -1,9 +1,12 @@
+import "./Store.css";
 import StoreNav from "./StoreNav/StoreNav";
 import StoreBanner from "./StoreBanner/StoreBanner";
 import { Navigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { useState } from "react";
+import Popup from "reactjs-popup";
+import Typed from "react-typed";
 
 function Store({
   currentStore,
@@ -14,10 +17,24 @@ function Store({
   user,
   storeOwner,
   setTriggerRender,
-  triggerRender
+  triggerRender,
 }) {
   const store = JSON.parse(localStorage.getItem("store"));
   const [filteredItems, setFilterdItems] = useState(null);
+  const [open, setOpen] = useState(false);
+
+  const popUp = (
+    <Popup classname open={open} onClose = {() => setOpen(false)} modal>
+      <Typed
+        strings={[
+          "Thank you for your purchase"
+        ]}
+        typeSpeed={40}
+        backSpeed={40}
+      />
+    </Popup>
+  );
+
   if (filteredItems === null) {
     setFilterdItems(
       store.items.filter(
@@ -26,9 +43,9 @@ function Store({
       )
     );
   }
+
   function handleBuyItem(item) {
     console.log(item);
-    // e.preventDefault();
     const formData = {
       name: item.name,
       picture: item.picture,
@@ -45,7 +62,8 @@ function Store({
     }).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          setTriggerRender(!triggerRender)
+          setTriggerRender(!triggerRender);
+          setOpen(!open);
           console.log(data);
         });
       }
@@ -87,27 +105,27 @@ function Store({
                         <Card.Text className="card-price">
                           ${item.price}
                         </Card.Text>
-                        <Button
-                          onClick={() => handleBuyItem(item)}
-                          variant="custom"
-                        >
-                          Buy
-                        </Button>
                       </Card.Body>
+                      <Button
+                        onClick={() => handleBuyItem(item)}
+                        variant="custom"
+                      >
+                        Buy
+                      </Button>
                     </Card>
                   );
                 })}
               </div>
             </div>
+             {popUp}
           </div>
         );
       }
     } else if (viewingStore === false) {
       return <Navigate to={"/"} />;
     }
-    // return <h2>Loading...</h2>;
     return (
-      <div>
+      <div id="logged_out_store">
         <StoreNav
           setCurrentStore={setCurrentStore}
           setChosenStore={setChosenStore}

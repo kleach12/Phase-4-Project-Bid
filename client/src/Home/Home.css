@@ -23,3 +23,15 @@
 .card-item{
   color:white
 }
+
+.home-overlay {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.home-content {
+  color: #4e148c;
+  background-color: black;
+  font-size: 40px;
+  font-family: "Silkscreen", cursive;
+  padding: 5px;
+}

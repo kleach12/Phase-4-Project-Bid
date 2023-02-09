@@ -4,6 +4,8 @@ import Carosel from "./Carosel/Carosel";
 import LoggedInNav from "./LoggedInNav/LoggedInNav";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import Popup from "reactjs-popup";
+import Typed from "react-typed";
 
 function Home({
   signedIn,
@@ -20,6 +22,20 @@ function Home({
   setStoreOwner,
   items,
 }) {
+  const popUp = (
+    <Popup className = {'home'} trigger={<Button variant="custom"> Buy </Button>} modal>
+      <Typed
+        strings={[
+          "Hello",
+          "You must be new to Bid",
+          "In order to start buying or selling you have to create a Profile",
+        ]}
+        typeSpeed={40}
+        backSpeed={40}
+      />
+    </Popup>
+  );
+
   if (items) {
     if (signedIn) {
       return (
@@ -102,6 +118,7 @@ function Home({
 
                       <Card.Text className="card-item">{item.name}</Card.Text>
                     </Card.Body>
+                    {popUp}
                   </Card>
                 );
               })}
