@@ -24,7 +24,7 @@ function Store({
   const [open, setOpen] = useState(false);
 
   const popUp = (
-    <Popup classname open={open} onClose = {() => setOpen(false)} modal>
+    <Popup className ={'store_popup'} open={open} onClose = {() => setOpen(false)} modal>
       <Typed
         strings={[
           "Thank you for your purchase"

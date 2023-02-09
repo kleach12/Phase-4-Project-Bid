@@ -6,6 +6,8 @@ A full stack web application built on a React frontend and Rails backend. This i
 
 
 <h2>Installation</h2>
+
+Install
 - Step 1: run bundle install to install all rails gems
 - Step 2: cd into the client and run npm install --force for all dependencies 
   - --force is necessary because react-typed was last updated to run on react 16.3.0

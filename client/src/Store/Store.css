@@ -1,10 +1,10 @@
 
-.popup-overlay {
+.store_popup-overlay {
   background: rgba(0, 0, 0, 0);
 }
 
 
-.popup-content {
+.store_popup-content {
   color: white;
   background-color: #613dc1;
   font-size: 20px;
