@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
 
   def create 
     item = Item.create(item_params)
-    if item
+    if item.valid?
       render json: item, status: :created
     else 
       render json: {errors: item.errors.full_messages}, status: :unprocessable_entity

@@ -35,12 +35,13 @@ Kale Leach
 This project has been completed but is still being maintained by myself as I am constantly updating it with new things I learn.
 
 <h2>Colors</h2>
-   These are some of the colors that were used for the web application
-     000000 black
-     808080 gray web
-     FFFFFF white
-     613dc1 plump purple
-     4e148c Blue violet color
+
+Colors used on application
+  - 000000 black
+  - 808080 gray web
+  - FFFFFF white
+  - 613dc1 plump purple
+  - 4e148c Blue violet color
 
 
 

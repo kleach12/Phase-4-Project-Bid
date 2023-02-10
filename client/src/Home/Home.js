@@ -23,15 +23,19 @@ function Home({
   items,
 }) {
   const popUp = (
-    <Popup className = {'home'} trigger={<Button variant="custom"> Buy </Button>} modal>
+    <Popup
+      className={"home"}
+      trigger={<Button variant="custom"> Buy </Button>}
+      modal
+    >
       <Typed
         strings={[
-          "Hello",
-          "You must be new to Bid",
+          "Hello, You must be new to Bid",
           "In order to start buying or selling you have to create a Profile",
+          "Use the carousel to cycle through stores and find more items"
         ]}
-        typeSpeed={40}
-        backSpeed={40}
+        typeSpeed={30}
+        backSpeed={20}
       />
     </Popup>
   );

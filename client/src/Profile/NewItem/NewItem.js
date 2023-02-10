@@ -1,3 +1,4 @@
+import './NewItem.css'
 import { useState } from "react";
 import { Navigate, Link } from "react-router-dom";
 import Typed from "react-typed";
@@ -5,19 +6,31 @@ import Typed from "react-typed";
 function NewItem({ storeOwner, setTriggerRender, triggerRender, newItem }) {
   const [itemCreated, setItemCreatedItem] = useState(false);
   const [itemName, setItemName] = useState("");
-  const [itemPrice, setItemPrice] = useState(0);
+  const [itemPrice, setItemPrice] = useState("");
   const [itemPicture, setItemPicture] = useState("");
+  const [error, setError] = useState(null);
+  const errorMessage = (
+    <Typed
+      strings={[error]}
+      typeSpeed={40}
+      backSpeed={40}
+      className="error_msg"
+    />
+  );
 
   function handleItemName(e) {
     setItemName(e.target.value);
+    setError(null)
   }
 
   function handleItemPrice(e) {
     setItemPrice(e.target.value);
+    setError(null)
   }
 
   function handleItemPicture(e) {
     setItemPicture(e.target.value);
+    setError(null)
   }
 
   function handleSubmit(e) {
@@ -35,17 +48,19 @@ function NewItem({ storeOwner, setTriggerRender, triggerRender, newItem }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
-    }).then((response) => {
-      if (response.ok) {
-        response.json().then((data) => {
-          setTriggerRender(!triggerRender)
-          newItem(data)
+    }).then((r) => r.json())
+      .then((data) => {
+          if (data.errors) {
+            console.log(data.errors)
+            setError(data.errors[0]);
+          } else {
+            setTriggerRender(!triggerRender);
+            newItem(data);
+            setItemCreatedItem(true);
+          }
         })
       }
-    });
-    setItemCreatedItem(true)
-  }
-  
+
   if (itemCreated) {
     return <Navigate to={"/profile"} />;
   }
@@ -91,9 +106,9 @@ function NewItem({ storeOwner, setTriggerRender, triggerRender, newItem }) {
               type="text"
             />
           </Typed>
-
-          <button onClick={handleSubmit}> Create Item</button>
         </div>
+        <button onClick={handleSubmit}> Create Item</button>
+        <h2>{error ? errorMessage : null}</h2>
       </form>
     </div>
   );

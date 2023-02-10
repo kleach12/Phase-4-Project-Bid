@@ -40,16 +40,6 @@ function App() {
     fetch("/me").then((response) => {
       if (!response.ok) {
         throw Error('There is no user signed in at this time')
-        console.log(response)
-        // response.json().then((data) => {
-        //   if (data) {
-        //     console.log('data');
-        //   } else {
-        //     console.log(data);
-        //     setUser(data);
-        //     setSignedIn(true);
-        //   }
-        // });
       }
       return response.json().then((data) => {
           if (data.error) {

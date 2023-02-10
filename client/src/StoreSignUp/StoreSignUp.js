@@ -62,6 +62,7 @@ function StoreSignUp({ setStoreOwner, signedIn, newStore, setSignedIn }) {
         } else {
           setSignedIn(true);
           setStoreOwner(data);
+          newStore(data)
         }
       }).catch(e => {console.log(e)})
   }
