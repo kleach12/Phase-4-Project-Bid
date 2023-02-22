@@ -24,6 +24,8 @@ gem 'faker'
 
 gem 'foreman'
 
+gem 'active_model_serializers'
+
 # gem 'byebug', '~> 9.0', '>= 9.0.6'
 
 group :development, :test do

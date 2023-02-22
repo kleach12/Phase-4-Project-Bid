@@ -50,7 +50,7 @@ class StoresController < ApplicationController
   end
 
   def find_store
-    Store.find(params[:id])
+    Store.find_by(name: params[:name])
   end 
 
   def render_not_found_response

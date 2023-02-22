@@ -16,14 +16,16 @@
   font-family: "Silkscreen", cursive;
 }
 
-.card-title{
+.card-title {
   font-size: 50px;
 }
 
-.card-item{
-  color:white
+.card-item {
+  color: white;
 }
-
+.home_card_img {
+  height: 60%;
+}
 .home-overlay {
   background: rgba(0, 0, 0, 0.4);
 }

@@ -5,13 +5,12 @@ import { Navigate } from "react-router-dom";
 
 function Carosel({ allStores, viewingStore, setStoreView }) {
   function handleStore(currStore) {
-    console.log(currStore);
-    console.log(currStore.id);
 
-    fetch(`/showingstore/${currStore.id}`).then((response) => {
+    fetch(`/showingstore/${currStore.name}`).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
           setStoreView(true);
+          console.log(data)
           localStorage.setItem("store", JSON.stringify(data));
         });
       }
@@ -25,7 +24,7 @@ function Carosel({ allStores, viewingStore, setStoreView }) {
         {allStores.map((store) => {
           return (
             <Carousel.Item
-              key={store.id}
+              key={store.name}
               interval={5000}
               className="caro_item"
               onClick={() => handleStore(store)}

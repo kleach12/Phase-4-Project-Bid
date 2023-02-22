@@ -73,7 +73,7 @@ function Home({
                     <Card.Img
                       variant="top"
                       src={item.picture}
-                      className="card-img"
+                      className="home_card_img"
                     />
                     <Card.Body>
                       <Card.Title className="card-title">
@@ -113,7 +113,7 @@ function Home({
                     <Card.Img
                       variant="top"
                       src={item.picture}
-                      className="card-img"
+                      className="home_card_img"
                     />
                     <Card.Body>
                       <Card.Title className="card-title">

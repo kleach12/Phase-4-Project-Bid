@@ -24,17 +24,19 @@ function Store({
   const [open, setOpen] = useState(false);
 
   const popUp = (
-    <Popup className ={'store_popup'} open={open} onClose = {() => setOpen(false)} modal>
+    <Popup
+      className={"store_popup"}
+      open={open}
+      onClose={() => setOpen(false)}
+      modal
+    >
       <Typed
-        strings={[
-          "Thank you for your purchase"
-        ]}
+        strings={["Thank you for your purchase"]}
         typeSpeed={40}
         backSpeed={40}
       />
     </Popup>
   );
-
   if (filteredItems === null) {
     setFilterdItems(
       store.items.filter(
@@ -47,7 +49,7 @@ function Store({
   function handleBuyItem(item) {
     console.log(item);
     const formData = {
-      item_id: item.id
+      item_id: item.id,
       // name: item.name,
       // picture: item.picture,
       // price: item.price,
@@ -119,7 +121,7 @@ function Store({
                 })}
               </div>
             </div>
-             {popUp}
+            {popUp}
           </div>
         );
       }

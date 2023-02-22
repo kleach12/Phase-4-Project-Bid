@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def show 
     user = user_in_session
     if user
-      render json: user, include: :items
+      render json: user
     else
       render json: {error: "No user logged in"}, status: :unauthorized
     end
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user.valid?
       session[:user_id] = user.id 
-      render json: user, status: :created, include: :items
+      render json: user, status: :created
     else 
       render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     user = user_in_session
     if user
     user.update(user_params)
-    render json: user, include: :items
+    render json: user
     else
       render json: {error: "This User is not logged in"}
     end

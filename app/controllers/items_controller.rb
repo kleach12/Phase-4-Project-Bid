@@ -27,18 +27,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  # def update
-  #   item = find_item
-  #   item.update(item_params)
-  #   render json: item
-  # end
-
-  # def destroy
-  #   item = find_item
-  #   item.destroy
-  #   head :no_content
-  # end
-
 
   private
 
