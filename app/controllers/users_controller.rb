@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show 
-    user = User.find_by(id: session[:user_id])
+    user = user_in_session
     if user
       render json: user, include: :items
     else
@@ -25,21 +25,33 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = find_user
+    user = user_in_session
+    if user
     user.update(user_params)
     render json: user, include: :items
+    else
+      render json: {error: "This User is not logged in"}
+    end
   end
 
   def destroy
-    user = find_user
-    user.destroy
-    head :no_content
+    user = user_in_session
+    if user
+      user.destroy
+      head :no_content
+    else
+      render json: {error: "This User is not logged in"}
+    end
   end
 
   private
 
   def user_params
     params.permit(:username, :password, :password_confirmation, :profile_pic, :profile_banner)
+  end
+
+  def user_in_session
+    User.find_by(id: session[:user_id]) 
   end
 
   def find_user

@@ -74,6 +74,7 @@ function App() {
       if (response.ok) {
         response.json().then((data) => {
           setItem(data);
+          console.log(data)
         });
       }
     });

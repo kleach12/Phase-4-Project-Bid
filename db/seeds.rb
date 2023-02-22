@@ -13,7 +13,7 @@ fifth_store = Store.fifth.id
 
 # print random_store
 50.times do 
-  Item.create!(name: Faker::Commerce.product_name, picture:' https://www.seekpng.com/png/detail/312-3124209_pokeball-pixel-art-easy-cool-pixel-art.png', price: rand(20..100), user_id: 'null', store_id: rand(first_store..fifth_store) )
+  Item.create!(name: Faker::Commerce.product_name, picture:' https://www.seekpng.com/png/detail/312-3124209_pokeball-pixel-art-easy-cool-pixel-art.png', price: rand(20..100), store_id: rand(first_store..fifth_store) )
 end
 
 puts 'done'

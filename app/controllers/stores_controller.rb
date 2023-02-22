@@ -34,8 +34,8 @@ class StoresController < ApplicationController
   end
 
   def update 
-    store = Store.find(params[:id])
-    store.update(store_params )
+    store = store_in_session
+    store.update(store_params)
     render json: store, include: :items
   end
 
@@ -44,6 +44,10 @@ class StoresController < ApplicationController
   def store_params 
     params.permit(:name, :picture, :password, :password_confirmation)
   end 
+
+  def store_in_session
+    Store.find_by(id: session[:store_id]) 
+  end
 
   def find_store
     Store.find(params[:id])

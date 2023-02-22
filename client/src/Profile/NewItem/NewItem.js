@@ -38,9 +38,7 @@ function NewItem({ storeOwner, setTriggerRender, triggerRender, newItem }) {
     const formData = {
       name: itemName,
       picture: itemPicture,
-      price: itemPrice,
-      store_id: storeOwner.id,
-      user_id: null,
+      price: itemPrice
     };
     fetch("/items", {
       method: "POST",

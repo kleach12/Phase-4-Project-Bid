@@ -4,5 +4,6 @@ class Item < ApplicationRecord
   validates :price, numericality: { only_integer: true }
   validates :picture, presence: true
   belongs_to :store
-  belongs_to :user, optional: :true
+  has_many :useritems
+  has_many :users, through: :useritems
 end

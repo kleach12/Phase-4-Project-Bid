@@ -47,13 +47,14 @@ function Store({
   function handleBuyItem(item) {
     console.log(item);
     const formData = {
-      name: item.name,
-      picture: item.picture,
-      price: item.price,
-      store_id: item.store_id,
-      user_id: user.id,
+      item_id: item.id
+      // name: item.name,
+      // picture: item.picture,
+      // price: item.price,
+      // store_id: item.store_id,
+      // user_id: user.id,
     };
-    fetch(`/items`, {
+    fetch(`/useritems`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -69,6 +70,7 @@ function Store({
       }
     });
   }
+
   if (filteredItems) {
     if (viewingStore && filteredItems) {
       if (user) {

@@ -14,35 +14,41 @@ class ItemsController < ApplicationController
   end
 
   def create 
-    item = Item.create(item_params)
-    if item.valid?
-      render json: item, status: :created
+    store = Store.find_by(id: session[:store_id]) 
+    if store 
+     item = Item.create(item_params)
+     if item.valid?
+        render json: item, status: :created
+     else 
+       render json: {errors: item.errors.full_messages}, status: :unprocessable_entity
+      end
     else 
-      render json: {errors: item.errors.full_messages}, status: :unprocessable_entity
+     render json: {error: "This Store is not logged in"}
     end
   end
 
-  def update
-    item = find_item
-    item.update(item_params)
-    render json: item
-  end
+  # def update
+  #   item = find_item
+  #   item.update(item_params)
+  #   render json: item
+  # end
 
-  def destroy
-    item = find_item
-    item.destroy
-    head :no_content
-  end
+  # def destroy
+  #   item = find_item
+  #   item.destroy
+  #   head :no_content
+  # end
 
 
   private
 
+  
   def find_item
     Item.find_by(id: params[:id])
   end
 
   def item_params
-    params.permit(:name, :price, :user_id, :picture, :store_id, :id)
+    params.permit(:name, :price, :user_id, :picture, :id).merge({store_id: session[:store_id]})
   end
 
   def render_not_found_response
