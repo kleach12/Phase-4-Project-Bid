@@ -10,7 +10,7 @@ class StoresController < ApplicationController
     if store
       render json: store, include: :items
     else 
-      render json: {error: "This store does not exisit"}, status: :unauthorized
+      render json: {error: "This store does not exisit"}, status: :ok
     end 
   end 
 
@@ -18,7 +18,7 @@ class StoresController < ApplicationController
     store = Store.create(store_params)
     if store.valid?
       session[:store_id] = store.id 
-      render json: store, status: :created, include: :items
+      render json: store, status: :created
     else
       render json: {errors: store.errors.full_messages}, status: :unprocessable_entity
     end
