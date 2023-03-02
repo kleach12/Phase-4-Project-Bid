@@ -21,7 +21,7 @@ function Banner({ user, setUser }) {
       profile_banner: newBanner,
     };
 
-    fetch(`/users/${user.id}`, {
+    fetch(`/users`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json",

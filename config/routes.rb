@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   resources :stores
   resources :items
-  resources :users
+  resources :users, :only => [:index, :create, :show, :destroy]
   resources :useritems
+
+  put "/users", to: "users#update"
+  patch "/users", to: "users#update"
   post "/login", to: "sessions#create"
   get "/me", to: "users#show"
   delete "/logout", to: "sessions#destroy"

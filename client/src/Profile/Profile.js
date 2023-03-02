@@ -31,11 +31,11 @@ function Profile({
           </div>
           <div className="center">
             <div className="grid">
-              {user.items.map((item) => {
+              {user.items.map((item,index) => {
                 return (
                   <Card
                     bg={"black"}
-                    key={item.id}
+                    key={index}
                     style={{ width: "18rem" }}
                     className="grid-item"
                   >

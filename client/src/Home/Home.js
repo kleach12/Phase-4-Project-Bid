@@ -106,7 +106,7 @@ function Home({
                 return (
                   <Card
                     bg={"black"}
-                    key={item.id}
+                    key={item.name}
                     style={{ width: "18rem" }}
                     className="home-item"
                   >
