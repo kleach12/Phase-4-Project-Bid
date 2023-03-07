@@ -24,7 +24,7 @@ function Profile_Pic({ user, setUser }) {
       profile_pic: newPic,
     };
 
-    fetch(`/users/${user.id}`, {
+    fetch(`/users`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json",

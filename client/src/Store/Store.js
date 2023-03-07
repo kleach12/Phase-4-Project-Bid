@@ -66,7 +66,8 @@ function Store({
       if (response.ok) {
         response.json().then((data) => {
           setTriggerRender(!triggerRender);
-          setOpen(!open);
+          setOpen(true);
+          setTimeout(() =>  {setOpen(false)}, 2000)
           console.log(data);
         });
       }
