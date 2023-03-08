@@ -39,7 +39,7 @@ function Home({
       />
     </Popup>
   );
-
+    console.log(items)
   if (items) {
     if (signedIn) {
       return (

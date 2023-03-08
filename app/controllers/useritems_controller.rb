@@ -14,6 +14,16 @@ class UseritemsController < ApplicationController
     end
   end
 
+  def user_items
+    user = user_in_session
+    if user
+      items = Useritem.where(user_id: user.id)
+      render json: items
+    else 
+      render json: {error: "This User does not exist"}
+    end
+  end
+
   private
 
   def user_in_session
@@ -21,7 +31,7 @@ class UseritemsController < ApplicationController
   end
 
   def user_item_params
-    params.permit(:item_id).merge({user_id: session[:user_id]})
+    params.permit(:item_id, :user_price).merge({user_id: session[:user_id]})
   end
 
 end

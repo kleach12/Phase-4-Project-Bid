@@ -1,4 +1,4 @@
 class StoreSerializer < ActiveModel::Serializer
-  attributes :name, :picture
+  attributes :name, :picture, :items
   has_many :items
 end

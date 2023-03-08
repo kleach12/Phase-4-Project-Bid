@@ -27,16 +27,29 @@ class ItemsController < ApplicationController
     end
   end
 
+  # def user_items
+  #   user = User.find_by(id: session[:user_id]) 
+  #   # user = User.find_by(params[:id])
+  #   if user 
+  #     render json: user
+  #   else 
+  #     render json: {error: "Error Error"}
+  #   end
+  # end
+
 
   private
 
+  # def user_in_session
+  #   User.find_by(id: session[:user_id]) 
+  # end
   
   def find_item
     Item.find_by(id: params[:id])
   end
 
   def item_params
-    params.permit(:name, :price, :user_id, :picture, :id).merge({store_id: session[:store_id]})
+    params.permit(:name, :price, :user_id, :picture, :id).merge({store_id: session[:store_id], user_id: ession[:user_id]})
   end
 
   def render_not_found_response

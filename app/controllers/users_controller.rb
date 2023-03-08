@@ -44,6 +44,27 @@ class UsersController < ApplicationController
     end
   end
 
+  def exp_items
+    user = User.find(params[:id])
+    if user
+      items = user.items
+      ex_item = items.filter{|items| items.price > 49 }
+      render json: ex_item
+    else 
+      render json: {error: "This User does not exist"}
+    end
+  end
+
+  # def user_items
+  #   user = user_in_session
+  #   if user
+  #     items = user.useritems
+  #     render json: items
+  #   else 
+  #     render json: {error: "This User does not exist"}
+  #   end
+  # end
+
   private
 
   def user_params

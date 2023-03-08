@@ -45,7 +45,7 @@ function App() {
           if (data.error) {
             console.log('data');
           } else {
-            console.log(data);
+            // console.log(data);
             setUser(data);
             setSignedIn(true);
           }
@@ -59,7 +59,7 @@ function App() {
       if (response.ok) {
         response.json().then((data) => {
           if (data.error) {
-            console.log(data.error);
+            // console.log(data.error);
           } else {
             setStoreOwner(data);
             setSignedIn(true);

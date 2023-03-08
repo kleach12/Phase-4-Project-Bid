@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   delete "/endstore", to: "store_session#destroy"
   get "/storeme", to: "stores#show"
   get "/showingstore/:name", to: "stores#show_store"
+  get '/users/:id/expitems', to: "users#exp_items"
+  get '/user_puchased' , to: 'useritems#user_items'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

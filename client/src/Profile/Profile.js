@@ -5,7 +5,7 @@ import Profile_Pic from "./ProfilePic/ProfilePic";
 import StoreBanner from "../Store/StoreBanner/StoreBanner";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Profile({
   user,
@@ -17,7 +17,25 @@ function Profile({
   setTriggerRender,
   filteredItems,
 }) {
+const [userItems, setUserItems] = useState(null)
 
+  useEffect(() => {
+    fetch("/user_puchased")
+    .then((response) => response.json())
+    .then((data) => {
+          if (data.error) {
+            console.log(data);
+          } else {
+            setUserItems(data);
+          }
+        });
+    }, []);
+
+if(userItems){
+  console.log(userItems[0].item.name)
+}
+    
+if( userItems){
   if (storeOwner || user) {
     if (user === null && storeOwner === null) {
       return "Loading...";
@@ -31,7 +49,7 @@ function Profile({
           </div>
           <div className="center">
             <div className="grid">
-              {user.items.map((item,index) => {
+              {userItems.map((userItem,index) => {
                 return (
                   <Card
                     bg={"black"}
@@ -41,12 +59,15 @@ function Profile({
                   >
                     <Card.Img
                       variant="top"
-                      src={item.picture}
+                      src={userItem.item.picture}
                       className="card-img"
                     />
                     <Card.Body>
                       <Card.Title className="card-title">
-                        {item.name}
+                        {userItem.item.name}
+                      </Card.Title>
+                      <Card.Title className="card-title" id = 'user_price'>
+                         ${userItem.user_price}
                       </Card.Title>
                     </Card.Body>
                   </Card>
@@ -100,5 +121,5 @@ function Profile({
     }
   }
 }
-
+}
 export default Profile;
